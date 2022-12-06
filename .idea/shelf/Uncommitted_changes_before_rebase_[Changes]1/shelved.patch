@@ -1,0 +1,1280 @@
+Index: ../lab5/app/src/main/java/database/dlab5/copy.java
+===================================================================
+diff --git a/../lab5/app/src/main/java/database/dlab5/copy.java b/../lab5/app/src/main/java/database/dlab5/copy.java
+deleted file mode 100644
+--- a/../lab5/app/src/main/java/database/dlab5/copy.java	
++++ /dev/null	
+@@ -1,270 +0,0 @@
+-package database.dlab5;
+-
+-import androidx.appcompat.app.AppCompatActivity;
+-import androidx.core.app.ActivityCompat;
+-
+-import android.Manifest;
+-import android.app.AlertDialog;
+-import android.content.DialogInterface;
+-import android.content.pm.PackageManager;
+-import android.os.Build;
+-import android.os.Bundle;
+-import android.util.Log;
+-import android.view.View;
+-import android.widget.EditText;
+-import android.widget.TextView;
+-import android.widget.Toast;
+-
+-import com.google.android.material.snackbar.Snackbar;
+-
+-import java.io.File;
+-import java.io.FileInputStream;
+-import java.io.FileOutputStream;
+-import java.io.IOException;
+-import java.io.PrintWriter;
+-import java.io.RandomAccessFile;
+-import java.util.ArrayList;
+-import java.util.HashMap;
+-import java.util.Map;
+-import java.util.Scanner;
+-
+-/*public class MainActivity extends AppCompatActivity {
+-    private final static String fname = "lab5.txt";
+-    public Integer countRows = 0;
+-    private static final int PERMISSION_REQUEST_CODE = 123;
+-    private String txt;
+-    private static Scanner x;
+-    @Override
+-    protected void onCreate(Bundle savedInstanceState) {
+-        super.onCreate(savedInstanceState);
+-        setContentView(R.layout.activity_main);
+-
+-
+-        boolean rc = false;
+-        File f = new File(super.getFilesDir(),fname);
+-        if(rc = f.exists())
+-        {
+-            Log.d("Log_02", "File "+ fname+" exists");
+-        }
+-        else
+-        {
+-            Log.d("Log_02", "File "+ fname+" dont found");
+-            //dialog window about creating a file
+-            AlertDialog.Builder b = new AlertDialog.Builder(this);
+-            b.setTitle("File " + fname + " is creating..").setPositiveButton("okay",
+-                    new DialogInterface.OnClickListener() {
+-                        @Override
+-                        public void onClick(DialogInterface dialogInterface, int i) {
+-                            Log.d("Log_02", "File " + fname + " is creating");
+-                            try
+-                            {
+-                                f.createNewFile();
+-                                Log.d("Log_02", "File "+ fname+" is created//" + f.getAbsolutePath() );
+-
+-                            }
+-                            catch (IOException e) {
+-                                Log.d("Log_02", "File "+ fname+" is not created");
+-                            }
+-                        }
+-                    });
+-            AlertDialog ad = b.create();
+-            ad.show();
+-
+-        }
+-    }
+-    public void saveText(View view){
+-
+-
+-        try {
+-            EditText key1 = (EditText) findViewById(R.id.key1txt);
+-            EditText value1 = (EditText) findViewById(R.id.value1txt);
+-
+-
+-
+-            if(key1.getText().toString().trim().length() < 1 && value1.getText().toString().trim().length() < 1)
+-            {
+-                Toast.makeText(this, "Введите ключ и значение", Toast.LENGTH_SHORT).show();
+-            }
+-            else
+-            {
+-                //int hashedKey = getHashCode(key1.getText().toString());
+-                txt="";
+-                txt = key1.getText().toString()  +value1.getText().toString();
+-                /*while(value1.getText().toString().length()<10)
+-                {
+-                    txt  =txt + "*";
+-                }*/
+-                //txt  = txt + value1.getText().toString() + "*";
+-                /*txt +="\n";
+-                if(hasPermissions())
+-                {
+-                    //writeData(fname, txt, 0);
+-                    writeData(fname, key1.getText().toString(), value1.getText().toString(), 0);
+-                    Toast.makeText(this, "Файл сохранен", Toast.LENGTH_SHORT).show();
+-                }else
+-                {
+-                    requestPermissionWithRationale();
+-                }
+-
+-
+-
+-            }
+-
+-
+-
+-        }
+-        catch(IOException ex) {
+-
+-            Toast.makeText(this, ex.getMessage(), Toast.LENGTH_SHORT).show();
+-        }
+-    }
+-
+-    // метод для записи данных в файл
+-    private void writeData(String filePath, String dataKey, String dataValue, int seek) throws IOException {
+-        // открываем файл с возможностью как чтения, так и записи
+-
+-        File f = new File(getFilesDir(), filePath);
+-        RandomAccessFile file = new RandomAccessFile(f, "rw");
+-        // переходим на определенный индекс
+-        file.seek(file.length());
+-        //String pos = String.valueOf(file.getFilePointer());
+-        //Toast.makeText(this, pos, Toast.LENGTH_SHORT).show();
+-
+-        // запишем данные в этом месте
+-
+-
+-        countRows++;*/
+-
+-       /* Integer i = 0;
+-        Integer isCopyFound = 0;
+-        if(file.length()==0)
+-        {file.write(data.getBytes());}
+-        else
+-            {for(i =0; i < countRows; i++)
+-            {
+-                String str = readRandomAccessFile(filePath, 0, i+1, 5);
+-                str = str.substring(0,5);
+-                //Toast.makeText(this, data.substring(0,5) + "*" + str, Toast.LENGTH_SHORT).show();
+-
+-                if(data.substring(0,5).equals(str))
+-                {
+-                    Toast.makeText(this, "yes", Toast.LENGTH_SHORT).show();
+-                    //break;
+-                    isCopyFound=1;
+-
+-                }
+-                else
+-                {
+-                    Toast.makeText(this, "no", Toast.LENGTH_SHORT).show();
+-                    //isCopyFound=1;
+-                }
+-            }
+-                if(isCopyFound==0)
+-                {
+-                    file.write(data.getBytes());
+-                }}*/
+-       /* boolean found = false;
+-        String tempKey="";
+-        try
+-        {
+-            x = new Scanner(f);
+-
+-        }
+-        catch(Exception e)
+-        {
+-            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+-        }
+-
+-
+-
+-        file.close();
+-    }
+-
+-    // метод для чтения с файла
+-    private byte[] readCharsFromFile(String filePath, int seek, int chars) throws IOException {
+-        // открываем файл только для чтения
+-        File f = new File(getFilesDir(), filePath);
+-        RandomAccessFile file = new RandomAccessFile(f, "rw");
+-        file.seek(seek);
+-        byte[] bytes = new byte[chars];
+-        file.read(bytes);
+-        file.close();
+-        return bytes;
+-    }
+-
+-    private int getHashCode(String key)
+-    {
+-        return Integer.parseInt(key.substring(3,4));
+-    }
+-
+-    private boolean hasPermissions(){
+-        int res = 0;
+-        //string array of permissions,
+-        String[] permissions = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE};
+-
+-        for (String perms : permissions){
+-            res = checkCallingOrSelfPermission(perms);
+-            if (!(res == PackageManager.PERMISSION_GRANTED)){
+-                return false;
+-            }
+-        }
+-        return true;
+-    }
+-    public void requestPermissionWithRationale() {
+-        if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+-                Manifest.permission.READ_EXTERNAL_STORAGE)) {
+-            final String message = "Storage permission is needed to show files count";
+-            Snackbar.make(MainActivity.this.findViewById(R.id.activity_view), message, Snackbar.LENGTH_LONG)
+-                    .setAction("GRANT", new View.OnClickListener() {
+-                        @Override
+-                        public void onClick(View v) {
+-                            requestPerms();
+-                        }
+-                    })
+-                    .show();
+-        } else {
+-            requestPerms();
+-        }
+-    }
+-    private void requestPerms(){
+-        String[] permissions = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE};
+-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+-            requestPermissions(permissions,PERMISSION_REQUEST_CODE);
+-        }
+-    }
+-
+-    public String readRandomAccessFile(String filePath, int lineStart, int lineEnd, int charsPerLine)
+-    {
+-        File f = new File(getFilesDir(), filePath);
+-        String data = "";
+-
+-        ArrayList<String> dialogLinesRead = new ArrayList<String>();
+-        int bytesPerLine = charsPerLine+2;
+-
+-        try{
+-            RandomAccessFile file = new RandomAccessFile(f, "rw");
+-            for(int i = lineStart; i < lineEnd; i++)
+-            {
+-                file.seek(bytesPerLine*i);
+-                data = file.readLine();
+-                dialogLinesRead.add(data);
+-
+-            }
+-            file.close();
+-        } catch (Exception e) {
+-            e.printStackTrace();
+-        }
+-        String returnData ="";
+-        for(int i =0; i< dialogLinesRead.size();i++)
+-        {
+-            returnData+=dialogLinesRead.get(i);
+-        }
+-        if(dialogLinesRead.isEmpty())
+-        {
+-            Toast.makeText(this, "Файл пуст", Toast.LENGTH_SHORT).show();
+-        }
+-        return returnData;
+-
+-    }
+-
+-}*/
+\ No newline at end of file
+Index: ../lab5/app/.gitignore
+===================================================================
+diff --git a/../lab5/app/.gitignore b/../lab5/app/.gitignore
+deleted file mode 100644
+--- a/../lab5/app/.gitignore	
++++ /dev/null	
+@@ -1,1 +0,0 @@
+-/build
+\ No newline at end of file
+Index: ../lab5/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml
+===================================================================
+diff --git a/../lab5/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml b/../lab5/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml
+deleted file mode 100644
+--- a/../lab5/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml	
++++ /dev/null	
+@@ -1,5 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+-    <background android:drawable="@drawable/ic_launcher_background" />
+-    <foreground android:drawable="@drawable/ic_launcher_foreground" />
+-</adaptive-icon>
+\ No newline at end of file
+Index: ../lab5/app/src/main/res/drawable-v24/ic_launcher_foreground.xml
+===================================================================
+diff --git a/../lab5/app/src/main/res/drawable-v24/ic_launcher_foreground.xml b/../lab5/app/src/main/res/drawable-v24/ic_launcher_foreground.xml
+deleted file mode 100644
+--- a/../lab5/app/src/main/res/drawable-v24/ic_launcher_foreground.xml	
++++ /dev/null	
+@@ -1,30 +0,0 @@
+-<vector xmlns:android="http://schemas.android.com/apk/res/android"
+-    xmlns:aapt="http://schemas.android.com/aapt"
+-    android:width="108dp"
+-    android:height="108dp"
+-    android:viewportWidth="108"
+-    android:viewportHeight="108">
+-    <path android:pathData="M31,63.928c0,0 6.4,-11 12.1,-13.1c7.2,-2.6 26,-1.4 26,-1.4l38.1,38.1L107,108.928l-32,-1L31,63.928z">
+-        <aapt:attr name="android:fillColor">
+-            <gradient
+-                android:endX="85.84757"
+-                android:endY="92.4963"
+-                android:startX="42.9492"
+-                android:startY="49.59793"
+-                android:type="linear">
+-                <item
+-                    android:color="#44000000"
+-                    android:offset="0.0" />
+-                <item
+-                    android:color="#00000000"
+-                    android:offset="1.0" />
+-            </gradient>
+-        </aapt:attr>
+-    </path>
+-    <path
+-        android:fillColor="#FFFFFF"
+-        android:fillType="nonZero"
+-        android:pathData="M65.3,45.828l3.8,-6.6c0.2,-0.4 0.1,-0.9 -0.3,-1.1c-0.4,-0.2 -0.9,-0.1 -1.1,0.3l-3.9,6.7c-6.3,-2.8 -13.4,-2.8 -19.7,0l-3.9,-6.7c-0.2,-0.4 -0.7,-0.5 -1.1,-0.3C38.8,38.328 38.7,38.828 38.9,39.228l3.8,6.6C36.2,49.428 31.7,56.028 31,63.928h46C76.3,56.028 71.8,49.428 65.3,45.828zM43.4,57.328c-0.8,0 -1.5,-0.5 -1.8,-1.2c-0.3,-0.7 -0.1,-1.5 0.4,-2.1c0.5,-0.5 1.4,-0.7 2.1,-0.4c0.7,0.3 1.2,1 1.2,1.8C45.3,56.528 44.5,57.328 43.4,57.328L43.4,57.328zM64.6,57.328c-0.8,0 -1.5,-0.5 -1.8,-1.2s-0.1,-1.5 0.4,-2.1c0.5,-0.5 1.4,-0.7 2.1,-0.4c0.7,0.3 1.2,1 1.2,1.8C66.5,56.528 65.6,57.328 64.6,57.328L64.6,57.328z"
+-        android:strokeWidth="1"
+-        android:strokeColor="#00000000" />
+-</vector>
+\ No newline at end of file
+Index: ../lab5/app/src/main/AndroidManifest.xml
+===================================================================
+diff --git a/../lab5/app/src/main/AndroidManifest.xml b/../lab5/app/src/main/AndroidManifest.xml
+deleted file mode 100644
+--- a/../lab5/app/src/main/AndroidManifest.xml	
++++ /dev/null	
+@@ -1,23 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+-    package="database.dlab5">
+-<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+-    <application
+-        android:allowBackup="true"
+-        android:icon="@mipmap/ic_launcher"
+-        android:label="@string/app_name"
+-        android:roundIcon="@mipmap/ic_launcher_round"
+-        android:supportsRtl="true"
+-        android:theme="@style/Theme.Dlab5">
+-        <activity
+-            android:name=".MainActivity"
+-            android:exported="true">
+-            <intent-filter>
+-                <action android:name="android.intent.action.MAIN" />
+-
+-                <category android:name="android.intent.category.LAUNCHER" />
+-            </intent-filter>
+-        </activity>
+-    </application>
+-
+-</manifest>
+\ No newline at end of file
+Index: ../lab5/gradle/wrapper/gradle-wrapper.properties
+===================================================================
+diff --git a/../lab5/gradle/wrapper/gradle-wrapper.properties b/../lab5/gradle/wrapper/gradle-wrapper.properties
+deleted file mode 100644
+--- a/../lab5/gradle/wrapper/gradle-wrapper.properties	
++++ /dev/null	
+@@ -1,6 +0,0 @@
+-#Tue Sep 07 14:36:23 MSK 2021
+-distributionBase=GRADLE_USER_HOME
+-distributionUrl=https\://services.gradle.org/distributions/gradle-7.0.2-bin.zip
+-distributionPath=wrapper/dists
+-zipStorePath=wrapper/dists
+-zipStoreBase=GRADLE_USER_HOME
+Index: ../lab5/.idea/compiler.xml
+===================================================================
+diff --git a/../lab5/.idea/compiler.xml b/../lab5/.idea/compiler.xml
+deleted file mode 100644
+--- a/../lab5/.idea/compiler.xml	
++++ /dev/null	
+@@ -1,6 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="CompilerConfiguration">
+-    <bytecodeTargetLevel target="11" />
+-  </component>
+-</project>
+\ No newline at end of file
+Index: ../lab5/app/build.gradle
+===================================================================
+diff --git a/../lab5/app/build.gradle b/../lab5/app/build.gradle
+deleted file mode 100644
+--- a/../lab5/app/build.gradle	
++++ /dev/null	
+@@ -1,38 +0,0 @@
+-plugins {
+-    id 'com.android.application'
+-}
+-
+-android {
+-    compileSdk 31
+-
+-    defaultConfig {
+-        applicationId "database.dlab5"
+-        minSdk 21
+-        targetSdk 31
+-        versionCode 1
+-        versionName "1.0"
+-
+-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+-    }
+-
+-    buildTypes {
+-        release {
+-            minifyEnabled false
+-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+-        }
+-    }
+-    compileOptions {
+-        sourceCompatibility JavaVersion.VERSION_1_8
+-        targetCompatibility JavaVersion.VERSION_1_8
+-    }
+-}
+-
+-dependencies {
+-
+-    implementation 'androidx.appcompat:appcompat:1.3.1'
+-    implementation 'com.google.android.material:material:1.4.0'
+-    implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
+-    testImplementation 'junit:junit:4.+'
+-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+-}
+\ No newline at end of file
+Index: ../lab5/app/src/test/java/database/dlab5/ExampleUnitTest.java
+===================================================================
+diff --git a/../lab5/app/src/test/java/database/dlab5/ExampleUnitTest.java b/../lab5/app/src/test/java/database/dlab5/ExampleUnitTest.java
+deleted file mode 100644
+--- a/../lab5/app/src/test/java/database/dlab5/ExampleUnitTest.java	
++++ /dev/null	
+@@ -1,17 +0,0 @@
+-package database.dlab5;
+-
+-import org.junit.Test;
+-
+-import static org.junit.Assert.*;
+-
+-/**
+- * Example local unit test, which will execute on the development machine (host).
+- *
+- * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
+- */
+-public class ExampleUnitTest {
+-    @Test
+-    public void addition_isCorrect() {
+-        assertEquals(4, 2 + 2);
+-    }
+-}
+\ No newline at end of file
+Index: ../lab5/app/src/main/res/drawable/ic_launcher_background.xml
+===================================================================
+diff --git a/../lab5/app/src/main/res/drawable/ic_launcher_background.xml b/../lab5/app/src/main/res/drawable/ic_launcher_background.xml
+deleted file mode 100644
+--- a/../lab5/app/src/main/res/drawable/ic_launcher_background.xml	
++++ /dev/null	
+@@ -1,170 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<vector xmlns:android="http://schemas.android.com/apk/res/android"
+-    android:width="108dp"
+-    android:height="108dp"
+-    android:viewportWidth="108"
+-    android:viewportHeight="108">
+-    <path
+-        android:fillColor="#3DDC84"
+-        android:pathData="M0,0h108v108h-108z" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M9,0L9,108"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M19,0L19,108"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M29,0L29,108"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M39,0L39,108"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M49,0L49,108"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M59,0L59,108"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M69,0L69,108"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M79,0L79,108"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M89,0L89,108"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M99,0L99,108"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M0,9L108,9"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M0,19L108,19"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M0,29L108,29"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M0,39L108,39"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M0,49L108,49"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M0,59L108,59"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M0,69L108,69"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M0,79L108,79"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M0,89L108,89"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M0,99L108,99"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M19,29L89,29"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M19,39L89,39"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M19,49L89,49"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M19,59L89,59"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M19,69L89,69"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M19,79L89,79"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M29,19L29,89"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M39,19L39,89"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M49,19L49,89"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M59,19L59,89"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M69,19L69,89"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M79,19L79,89"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-</vector>
+Index: ../lab5/app/src/main/res/layout/activity_main.xml
+===================================================================
+diff --git a/../lab5/app/src/main/res/layout/activity_main.xml b/../lab5/app/src/main/res/layout/activity_main.xml
+deleted file mode 100644
+--- a/../lab5/app/src/main/res/layout/activity_main.xml	
++++ /dev/null	
+@@ -1,89 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+-    xmlns:app="http://schemas.android.com/apk/res-auto"
+-    xmlns:tools="http://schemas.android.com/tools"
+-    android:layout_width="match_parent"
+-    android:layout_height="match_parent"
+-    tools:context=".MainActivity"
+-    android:id="@+id/activity_view">
+-
+-    <EditText
+-        android:id="@+id/key1txt"
+-        android:digits="1234567890"
+-        android:layout_width="300dp"
+-        android:layout_height="60dp"
+-        android:layout_marginTop="40dp"
+-        android:hint="Ключ"
+-        android:maxLength="5"
+-        app:layout_constraintHorizontal_bias="0.144"
+-        app:layout_constraintLeft_toLeftOf="parent"
+-        app:layout_constraintRight_toRightOf="parent"
+-        app:layout_constraintTop_toTopOf="parent" />
+-
+-    <EditText
+-        android:id="@+id/value1txt"
+-        android:layout_width="300dp"
+-        android:layout_height="60dp"
+-        android:digits="1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+-        android:layout_marginStart="12dp"
+-        android:layout_marginTop="32dp"
+-        android:hint="Значение"
+-        android:maxLength="10"
+-        app:layout_constraintHorizontal_bias="0.144"
+-        app:layout_constraintLeft_toLeftOf="parent"
+-        app:layout_constraintRight_toRightOf="parent"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toBottomOf="@+id/key1txt" />
+-
+-    <Button
+-        android:id="@+id/savebutton"
+-        android:layout_width="135dp"
+-        android:layout_height="68dp"
+-        android:layout_marginStart="12dp"
+-        android:layout_marginTop="20dp"
+-        android:onClick="saveText"
+-        android:text="Ввод"
+-        app:layout_constraintHorizontal_bias="0.144"
+-        app:layout_constraintLeft_toLeftOf="parent"
+-        app:layout_constraintRight_toRightOf="parent"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toBottomOf="@+id/value1txt" />
+-
+-    <EditText
+-        android:id="@+id/key2txt"
+-        android:layout_width="300dp"
+-        android:layout_height="60dp"
+-        android:layout_marginTop="40dp"
+-        android:digits="1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+-        android:hint="Ключ"
+-        android:maxLength="5"
+-        app:layout_constraintHorizontal_bias="0.144"
+-        app:layout_constraintLeft_toLeftOf="parent"
+-        app:layout_constraintRight_toRightOf="parent"
+-        app:layout_constraintTop_toBottomOf="@+id/savebutton" />
+-
+-    <TextView
+-        android:id="@+id/value2txt"
+-        android:layout_width="300dp"
+-        android:layout_height="60dp"
+-        android:layout_marginTop="40dp"
+-        android:hint="Значение"
+-        app:layout_constraintHorizontal_bias="0.144"
+-        app:layout_constraintLeft_toLeftOf="parent"
+-        app:layout_constraintRight_toRightOf="parent"
+-        app:layout_constraintTop_toBottomOf="@+id/key2txt" />
+-    <Button
+-        android:id="@+id/readbutton"
+-        android:layout_width="135dp"
+-        android:layout_height="68dp"
+-        android:layout_marginStart="12dp"
+-        android:layout_marginTop="20dp"
+-        android:onClick="readText"
+-        android:text="Получить значение"
+-        app:layout_constraintHorizontal_bias="0.144"
+-        app:layout_constraintLeft_toLeftOf="parent"
+-        app:layout_constraintRight_toRightOf="parent"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toBottomOf="@+id/value2txt" />
+-
+-</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: ../lab5/app/src/main/res/values/colors.xml
+===================================================================
+diff --git a/../lab5/app/src/main/res/values/colors.xml b/../lab5/app/src/main/res/values/colors.xml
+deleted file mode 100644
+--- a/../lab5/app/src/main/res/values/colors.xml	
++++ /dev/null	
+@@ -1,10 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<resources>
+-    <color name="purple_200">#FFBB86FC</color>
+-    <color name="purple_500">#FF6200EE</color>
+-    <color name="purple_700">#FF3700B3</color>
+-    <color name="teal_200">#FF03DAC5</color>
+-    <color name="teal_700">#FF018786</color>
+-    <color name="black">#FF000000</color>
+-    <color name="white">#FFFFFFFF</color>
+-</resources>
+\ No newline at end of file
+Index: ../lab5/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml
+===================================================================
+diff --git a/../lab5/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml b/../lab5/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml
+deleted file mode 100644
+--- a/../lab5/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml	
++++ /dev/null	
+@@ -1,5 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+-    <background android:drawable="@drawable/ic_launcher_background" />
+-    <foreground android:drawable="@drawable/ic_launcher_foreground" />
+-</adaptive-icon>
+\ No newline at end of file
+Index: ../lab5/settings.gradle
+===================================================================
+diff --git a/../lab5/settings.gradle b/../lab5/settings.gradle
+deleted file mode 100644
+--- a/../lab5/settings.gradle	
++++ /dev/null	
+@@ -1,10 +0,0 @@
+-dependencyResolutionManagement {
+-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+-    repositories {
+-        google()
+-        mavenCentral()
+-        jcenter() // Warning: this repository is going to shut down soon
+-    }
+-}
+-rootProject.name = "dlab5"
+-include ':app'
+Index: ../lab5/app/src/main/res/values-night/themes.xml
+===================================================================
+diff --git a/../lab5/app/src/main/res/values-night/themes.xml b/../lab5/app/src/main/res/values-night/themes.xml
+deleted file mode 100644
+--- a/../lab5/app/src/main/res/values-night/themes.xml	
++++ /dev/null	
+@@ -1,16 +0,0 @@
+-<resources xmlns:tools="http://schemas.android.com/tools">
+-    <!-- Base application theme. -->
+-    <style name="Theme.Dlab5" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+-        <!-- Primary brand color. -->
+-        <item name="colorPrimary">@color/purple_200</item>
+-        <item name="colorPrimaryVariant">@color/purple_700</item>
+-        <item name="colorOnPrimary">@color/black</item>
+-        <!-- Secondary brand color. -->
+-        <item name="colorSecondary">@color/teal_200</item>
+-        <item name="colorSecondaryVariant">@color/teal_200</item>
+-        <item name="colorOnSecondary">@color/black</item>
+-        <!-- Status bar color. -->
+-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+-        <!-- Customize your theme here. -->
+-    </style>
+-</resources>
+\ No newline at end of file
+Index: ../lab5/app/src/main/res/values/strings.xml
+===================================================================
+diff --git a/../lab5/app/src/main/res/values/strings.xml b/../lab5/app/src/main/res/values/strings.xml
+deleted file mode 100644
+--- a/../lab5/app/src/main/res/values/strings.xml	
++++ /dev/null	
+@@ -1,3 +0,0 @@
+-<resources>
+-    <string name="app_name">dlab5</string>
+-</resources>
+\ No newline at end of file
+Index: ../lab5/.idea/gradle.xml
+===================================================================
+diff --git a/../lab5/.idea/gradle.xml b/../lab5/.idea/gradle.xml
+deleted file mode 100644
+--- a/../lab5/.idea/gradle.xml	
++++ /dev/null	
+@@ -1,19 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="GradleMigrationSettings" migrationVersion="1" />
+-  <component name="GradleSettings">
+-    <option name="linkedExternalProjectsSettings">
+-      <GradleProjectSettings>
+-        <option name="testRunner" value="GRADLE" />
+-        <option name="distributionType" value="DEFAULT_WRAPPED" />
+-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+-        <option name="modules">
+-          <set>
+-            <option value="$PROJECT_DIR$" />
+-            <option value="$PROJECT_DIR$/app" />
+-          </set>
+-        </option>
+-      </GradleProjectSettings>
+-    </option>
+-  </component>
+-</project>
+\ No newline at end of file
+Index: ../lab5/build.gradle
+===================================================================
+diff --git a/../lab5/build.gradle b/../lab5/build.gradle
+deleted file mode 100644
+--- a/../lab5/build.gradle	
++++ /dev/null	
+@@ -1,17 +0,0 @@
+-// Top-level build file where you can add configuration options common to all sub-projects/modules.
+-buildscript {
+-    repositories {
+-        google()
+-        mavenCentral()
+-    }
+-    dependencies {
+-        classpath "com.android.tools.build:gradle:7.0.2"
+-
+-        // NOTE: Do not place your application dependencies here; they belong
+-        // in the individual module build.gradle files
+-    }
+-}
+-
+-task clean(type: Delete) {
+-    delete rootProject.buildDir
+-}
+\ No newline at end of file
+Index: ../lab5/.idea/.gitignore
+===================================================================
+diff --git a/../lab5/.idea/.gitignore b/../lab5/.idea/.gitignore
+deleted file mode 100644
+--- a/../lab5/.idea/.gitignore	
++++ /dev/null	
+@@ -1,3 +0,0 @@
+-# Default ignored files
+-/shelf/
+-/workspace.xml
+Index: ../lab5/app/src/main/java/database/dlab5/MainActivity.java
+===================================================================
+diff --git a/../lab5/app/src/main/java/database/dlab5/MainActivity.java b/../lab5/app/src/main/java/database/dlab5/MainActivity.java
+deleted file mode 100644
+--- a/../lab5/app/src/main/java/database/dlab5/MainActivity.java	
++++ /dev/null	
+@@ -1,187 +0,0 @@
+-package database.dlab5;
+-
+-import androidx.appcompat.app.AppCompatActivity;
+-
+-import android.app.AlertDialog;
+-import android.content.DialogInterface;
+-import android.os.Bundle;
+-import android.util.Log;
+-import android.view.View;
+-import android.widget.EditText;
+-import android.widget.TextView;
+-import android.widget.Toast;
+-
+-import java.io.File;
+-import java.io.IOException;
+-import java.io.RandomAccessFile;
+-import java.util.Scanner;
+-
+-public class MainActivity extends AppCompatActivity {
+-
+-    private final static String fname = "lab5.txt";
+-    private static Scanner x;
+-    @Override
+-
+-    protected void onCreate(Bundle savedInstanceState) {
+-        super.onCreate(savedInstanceState);
+-        setContentView(R.layout.activity_main);
+-
+-        boolean rc = false;
+-        File f = new File(super.getFilesDir(), fname);
+-
+-        if(rc = f.exists()) {
+-            Log.d("Log_02", "File " + fname + " exists");
+-        }
+-        else {
+-            Log.d("Log_02", "File " + fname + " don't found");
+-
+-            AlertDialog.Builder b = new AlertDialog.Builder(this);
+-            b.setTitle("File " + fname + " is creating..").setPositiveButton("okay",
+-                    new DialogInterface.OnClickListener() {
+-                        @Override
+-                        public void onClick(DialogInterface dialogInterface, int i) {
+-                            try
+-                            {
+-                                f.createNewFile();
+-                                Log.d("Log_02", "File "+ fname+" is created//" + f.getAbsolutePath() );
+-
+-                            }
+-                            catch (IOException e) {
+-                                Log.d("Log_02", "File "+ fname+" is not created");
+-                            }
+-                        }
+-                    });
+-
+-            AlertDialog ad = b.create();
+-            ad.show();
+-        }
+-    }
+-
+-    public void saveText(View view){
+-        try {
+-            EditText key1 = (EditText) findViewById(R.id.key1txt);
+-            EditText value1 = (EditText) findViewById(R.id.value1txt);
+-
+-            if(key1.getText().toString().trim().length() < 1 && value1.getText().toString().trim().length() < 1) {
+-                Toast.makeText(this, "Введите ключ и значение", Toast.LENGTH_SHORT).show();
+-            }
+-            else {
+-                writeRandomAccessFile(fname, -1, key1.getText().toString(), value1.getText().toString(),20);
+-                key1.setText("");
+-                value1.setText("");
+-            }
+-        }
+-        catch(Exception ex) {
+-            Toast.makeText(this, ex.getMessage(), Toast.LENGTH_SHORT).show();
+-        }
+-    }
+-
+-    public void readText(View view)
+-    {
+-        File f = new File(getFilesDir(), fname);
+-        EditText key2 = (EditText) findViewById(R.id.key2txt);
+-        TextView value2 = (TextView) findViewById(R.id.value2txt);
+-        boolean found = false;
+-        String tempKey="";
+-        String key = key2.getText().toString();
+-
+-        try {
+-            RandomAccessFile file = new RandomAccessFile(f, "rw");
+-            x = new Scanner(f);
+-            while(x.hasNext() && !found) {
+-                tempKey = x.next();
+-                if(tempKey.substring(0,5).equals(key)) {
+-                    found=true;
+-                    value2.setText(tempKey.substring(6,tempKey.length()));
+-                }
+-            }
+-            if(!found) {
+-                Toast.makeText(this, "Значения к такому ключу нет", Toast.LENGTH_SHORT).show();
+-            }
+-            file.close();
+-        }
+-        catch(Exception e)
+-        {
+-            Toast.makeText(this, "error:"+e.getMessage(), Toast.LENGTH_SHORT).show();
+-        }
+-
+-    }
+-
+-    public void writeRandomAccessFile(String filePath, int lineToWriteData,String key, String value, int charsPerLine) {
+-        File f = new File(getFilesDir(), filePath);
+-        String data = key + "," + value + "***";
+-        int bytesPerLine = charsPerLine+2;
+-        int pos = 0;
+-
+-        try {
+-            RandomAccessFile file = new RandomAccessFile(f, "rw");
+-            long whereToWrite;
+-            if(lineToWriteData==-1) {
+-                whereToWrite= file.length();
+-            }
+-            else {
+-                whereToWrite = bytesPerLine*lineToWriteData;
+-            }
+-            boolean found = false;
+-            String tempKey = "";
+-            try {
+-                x = new Scanner(f);
+-                while(x.hasNext() && !found) {
+-                    tempKey = x.next();
+-
+-                    if(tempKey.substring(0,5).equals(key)) {
+-                        found=true;
+-                        Integer v1 = pos * bytesPerLine;
+-                        if((pos*bytesPerLine - 2)<0)
+-                        {
+-                            file.seek(v1);
+-                        }else {
+-                            file.seek(v1 - pos*2);
+-                        }
+-
+-                        file.write(data.getBytes());
+-                        file.writeBytes(System.getProperty("line.separator"));
+-                        Toast.makeText(this, "Значение перезаписано", Toast.LENGTH_SHORT).show();
+-
+-                    }
+-                    else {
+-                        if(tempKey.substring(4,5).equals(key.substring(4,5))) {
+-                            Toast.makeText(this, "Коллизия: " +tempKey.substring(4,5)+"+"+key.substring(4,5), Toast.LENGTH_SHORT).show();
+-                            Integer v1 = pos * bytesPerLine;
+-                            String link;
+-                            if((pos*bytesPerLine - 2)<0)
+-                            {
+-                                file.seek(v1);
+-                                link = tempKey.substring(0,16) + "," +whereToWrite;
+-                            }else {
+-                                file.seek(v1 - pos*2);
+-                                Integer v2 = v1 - pos*2;
+-                                link = tempKey.substring(0,16) + "," + whereToWrite;
+-                            }
+-
+-                            file.write(link.getBytes());
+-                            file.writeBytes(System.getProperty("line.separator"));
+-                        }
+-                    }
+-                    pos++;
+-                }
+-                if(!found)
+-                {
+-                    file.seek(whereToWrite);
+-                    file.write(data.getBytes());
+-                    file.writeBytes(System.getProperty("line.separator"));
+-                    Toast.makeText(this, "Файл сохранен", Toast.LENGTH_SHORT).show();
+-
+-                }
+-            }
+-            catch(Exception e)
+-            {
+-                Toast.makeText(this, "error:"+e.getMessage(), Toast.LENGTH_SHORT).show();
+-            }
+-            file.close();
+-        }
+-        catch (Exception e) {
+-            e.printStackTrace();
+-        }
+-    }
+-}
+\ No newline at end of file
+Index: ../lab5/gradle.properties
+===================================================================
+diff --git a/../lab5/gradle.properties b/../lab5/gradle.properties
+deleted file mode 100644
+--- a/../lab5/gradle.properties	
++++ /dev/null	
+@@ -1,19 +0,0 @@
+-# Project-wide Gradle settings.
+-# IDE (e.g. Android Studio) users:
+-# Gradle settings configured through the IDE *will override*
+-# any settings specified in this file.
+-# For more details on how to configure your build environment visit
+-# http://www.gradle.org/docs/current/userguide/build_environment.html
+-# Specifies the JVM arguments used for the daemon process.
+-# The setting is particularly useful for tweaking memory settings.
+-org.gradle.jvmargs=-Xmx2048m -Dfile.encoding=UTF-8
+-# When configured, Gradle will run in incubating parallel mode.
+-# This option should only be used with decoupled projects. More details, visit
+-# http://www.gradle.org/docs/current/userguide/multi_project_builds.html#sec:decoupled_projects
+-# org.gradle.parallel=true
+-# AndroidX package structure to make it clearer which packages are bundled with the
+-# Android operating system, and which are packaged with your app"s APK
+-# https://developer.android.com/topic/libraries/support-library/androidx-rn
+-android.useAndroidX=true
+-# Automatically convert third-party libraries to use AndroidX
+-android.enableJetifier=true
+\ No newline at end of file
+Index: ../lab5/.idea/deploymentTargetDropDown.xml
+===================================================================
+diff --git a/../lab5/.idea/deploymentTargetDropDown.xml b/../lab5/.idea/deploymentTargetDropDown.xml
+deleted file mode 100644
+--- a/../lab5/.idea/deploymentTargetDropDown.xml	
++++ /dev/null	
+@@ -1,17 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="deploymentTargetDropDown">
+-    <targetSelectedWithDropDown>
+-      <Target>
+-        <type value="QUICK_BOOT_TARGET" />
+-        <deviceKey>
+-          <Key>
+-            <type value="VIRTUAL_DEVICE_PATH" />
+-            <value value="C:\Users\Sasha\.android\avd\Pixel_4_API_30.avd" />
+-          </Key>
+-        </deviceKey>
+-      </Target>
+-    </targetSelectedWithDropDown>
+-    <timeTargetWasSelectedWithDropDown value="2021-09-20T07:01:23.852067100Z" />
+-  </component>
+-</project>
+\ No newline at end of file
+Index: ../lab5/app/proguard-rules.pro
+===================================================================
+diff --git a/../lab5/app/proguard-rules.pro b/../lab5/app/proguard-rules.pro
+deleted file mode 100644
+--- a/../lab5/app/proguard-rules.pro	
++++ /dev/null	
+@@ -1,21 +0,0 @@
+-# Add project specific ProGuard rules here.
+-# You can control the set of applied configuration files using the
+-# proguardFiles setting in build.gradle.
+-#
+-# For more details, see
+-#   http://developer.android.com/guide/developing/tools/proguard.html
+-
+-# If your project uses WebView with JS, uncomment the following
+-# and specify the fully qualified class name to the JavaScript interface
+-# class:
+-#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
+-#   public *;
+-#}
+-
+-# Uncomment this to preserve the line number information for
+-# debugging stack traces.
+-#-keepattributes SourceFile,LineNumberTable
+-
+-# If you keep the line number information, uncomment this to
+-# hide the original source file name.
+-#-renamesourcefileattribute SourceFile
+\ No newline at end of file
+Index: ../lab5/app/src/main/res/values/themes.xml
+===================================================================
+diff --git a/../lab5/app/src/main/res/values/themes.xml b/../lab5/app/src/main/res/values/themes.xml
+deleted file mode 100644
+--- a/../lab5/app/src/main/res/values/themes.xml	
++++ /dev/null	
+@@ -1,16 +0,0 @@
+-<resources xmlns:tools="http://schemas.android.com/tools">
+-    <!-- Base application theme. -->
+-    <style name="Theme.Dlab5" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+-        <!-- Primary brand color. -->
+-        <item name="colorPrimary">@color/purple_500</item>
+-        <item name="colorPrimaryVariant">@color/purple_700</item>
+-        <item name="colorOnPrimary">@color/white</item>
+-        <!-- Secondary brand color. -->
+-        <item name="colorSecondary">@color/teal_200</item>
+-        <item name="colorSecondaryVariant">@color/teal_700</item>
+-        <item name="colorOnSecondary">@color/black</item>
+-        <!-- Status bar color. -->
+-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+-        <!-- Customize your theme here. -->
+-    </style>
+-</resources>
+\ No newline at end of file
+Index: ../lab5/.idea/vcs.xml
+===================================================================
+diff --git a/../lab5/.idea/vcs.xml b/../lab5/.idea/vcs.xml
+deleted file mode 100644
+--- a/../lab5/.idea/vcs.xml	
++++ /dev/null	
+@@ -1,6 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="VcsDirectoryMappings">
+-    <mapping directory="$PROJECT_DIR$/.." vcs="Git" />
+-  </component>
+-</project>
+\ No newline at end of file
+Index: ../lab5/.idea/misc.xml
+===================================================================
+diff --git a/../lab5/.idea/misc.xml b/../lab5/.idea/misc.xml
+deleted file mode 100644
+--- a/../lab5/.idea/misc.xml	
++++ /dev/null	
+@@ -1,16 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="DesignSurface">
+-    <option name="filePathToZoomLevelMap">
+-      <map>
+-        <entry key="..\:/uni/database/dlab5/app/src/main/res/layout/activity_main.xml" value="0.24010416666666667" />
+-      </map>
+-    </option>
+-  </component>
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+-    <output url="file://$PROJECT_DIR$/build/classes" />
+-  </component>
+-  <component name="ProjectType">
+-    <option name="id" value="Android" />
+-  </component>
+-</project>
+\ No newline at end of file
+Index: ../lab5/.gitignore
+===================================================================
+diff --git a/../lab5/.gitignore b/../lab5/.gitignore
+deleted file mode 100644
+--- a/../lab5/.gitignore	
++++ /dev/null	
+@@ -1,15 +0,0 @@
+-*.iml
+-.gradle
+-/local.properties
+-/.idea/caches
+-/.idea/libraries
+-/.idea/modules.xml
+-/.idea/workspace.xml
+-/.idea/navEditor.xml
+-/.idea/assetWizardSettings.xml
+-.DS_Store
+-/build
+-/captures
+-.externalNativeBuild
+-.cxx
+-local.properties
+Index: ../lab5/app/src/androidTest/java/database/dlab5/ExampleInstrumentedTest.java
+===================================================================
+diff --git a/../lab5/app/src/androidTest/java/database/dlab5/ExampleInstrumentedTest.java b/../lab5/app/src/androidTest/java/database/dlab5/ExampleInstrumentedTest.java
+deleted file mode 100644
+--- a/../lab5/app/src/androidTest/java/database/dlab5/ExampleInstrumentedTest.java	
++++ /dev/null	
+@@ -1,26 +0,0 @@
+-package database.dlab5;
+-
+-import android.content.Context;
+-
+-import androidx.test.platform.app.InstrumentationRegistry;
+-import androidx.test.ext.junit.runners.AndroidJUnit4;
+-
+-import org.junit.Test;
+-import org.junit.runner.RunWith;
+-
+-import static org.junit.Assert.*;
+-
+-/**
+- * Instrumented test, which will execute on an Android device.
+- *
+- * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
+- */
+-@RunWith(AndroidJUnit4.class)
+-public class ExampleInstrumentedTest {
+-    @Test
+-    public void useAppContext() {
+-        // Context of the app under test.
+-        Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
+-        assertEquals("database.dlab5", appContext.getPackageName());
+-    }
+-}
+\ No newline at end of file

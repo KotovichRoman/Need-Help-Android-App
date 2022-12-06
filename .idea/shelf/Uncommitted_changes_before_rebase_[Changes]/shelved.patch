@@ -1,0 +1,1666 @@
+Index: ../lab4db/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml
+===================================================================
+diff --git a/../lab4db/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml b/../lab4db/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml
+deleted file mode 100644
+--- a/../lab4db/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml	
++++ /dev/null	
+@@ -1,5 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+-    <background android:drawable="@drawable/ic_launcher_background" />
+-    <foreground android:drawable="@drawable/ic_launcher_foreground" />
+-</adaptive-icon>
+\ No newline at end of file
+Index: ../lab4db/app/src/main/res/layout/activity_main.xml
+===================================================================
+diff --git a/../lab4db/app/src/main/res/layout/activity_main.xml b/../lab4db/app/src/main/res/layout/activity_main.xml
+deleted file mode 100644
+--- a/../lab4db/app/src/main/res/layout/activity_main.xml	
++++ /dev/null	
+@@ -1,76 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+-    xmlns:app="http://schemas.android.com/apk/res-auto"
+-    xmlns:tools="http://schemas.android.com/tools"
+-    android:layout_width="match_parent"
+-    android:layout_height="match_parent"
+-    tools:context=".MainActivity">
+-
+-    <EditText
+-        android:id="@+id/editTextSurname"
+-        android:layout_width="328dp"
+-        android:layout_height="51dp"
+-        android:layout_marginStart="4dp"
+-        android:ems="10"
+-        android:inputType="textPersonName"
+-        app:layout_constraintStart_toStartOf="parent"
+-        tools:ignore="MissingConstraints"
+-        tools:layout_editor_absoluteY="113dp" />
+-
+-    <Button
+-        android:id="@+id/input_button"
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
+-        android:layout_marginStart="124dp"
+-        android:layout_marginTop="168dp"
+-        android:onClick="InputClick"
+-        android:text="Input"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toBottomOf="@+id/editTextName"
+-        tools:ignore="MissingConstraints" />
+-
+-
+-    <EditText
+-        android:id="@+id/editTextName"
+-        android:layout_width="328dp"
+-        android:layout_height="51dp"
+-        android:layout_marginStart="4dp"
+-        android:layout_marginTop="56dp"
+-        android:ems="10"
+-        android:inputType="textPersonName"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toBottomOf="@+id/editTextSurname"
+-        tools:ignore="MissingConstraints" />
+-
+-    <TextView
+-        android:id="@+id/textView"
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
+-        android:layout_marginStart="4dp"
+-        android:layout_marginBottom="12dp"
+-        android:text="Surname"
+-        app:layout_constraintBottom_toTopOf="@+id/editTextSurname"
+-        app:layout_constraintStart_toStartOf="parent"
+-        tools:ignore="MissingConstraints" />
+-
+-    <TextView
+-        android:id="@+id/textView2"
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
+-        android:layout_marginStart="4dp"
+-        android:layout_marginBottom="12dp"
+-        android:text="Name"
+-        app:layout_constraintBottom_toTopOf="@+id/editTextName"
+-        app:layout_constraintStart_toStartOf="parent"
+-        tools:ignore="MissingConstraints" />
+-
+-    <TextView
+-        android:id="@+id/readResult"
+-        android:layout_width="412dp"
+-        android:layout_height="204dp"
+-        android:layout_marginTop="16dp"
+-        app:layout_constraintTop_toBottomOf="@+id/input_button"
+-        tools:ignore="MissingConstraints"
+-        tools:layout_editor_absoluteX="-1dp" />
+-
+-</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: ../lab4db/app/proguard-rules.pro
+===================================================================
+diff --git a/../lab4db/app/proguard-rules.pro b/../lab4db/app/proguard-rules.pro
+deleted file mode 100644
+--- a/../lab4db/app/proguard-rules.pro	
++++ /dev/null	
+@@ -1,21 +0,0 @@
+-# Add project specific ProGuard rules here.
+-# You can control the set of applied configuration files using the
+-# proguardFiles setting in build.gradle.
+-#
+-# For more details, see
+-#   http://developer.android.com/guide/developing/tools/proguard.html
+-
+-# If your project uses WebView with JS, uncomment the following
+-# and specify the fully qualified class name to the JavaScript interface
+-# class:
+-#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
+-#   public *;
+-#}
+-
+-# Uncomment this to preserve the line number information for
+-# debugging stack traces.
+-#-keepattributes SourceFile,LineNumberTable
+-
+-# If you keep the line number information, uncomment this to
+-# hide the original source file name.
+-#-renamesourcefileattribute SourceFile
+\ No newline at end of file
+Index: ../lab4db/app/build.gradle
+===================================================================
+diff --git a/../lab4db/app/build.gradle b/../lab4db/app/build.gradle
+deleted file mode 100644
+--- a/../lab4db/app/build.gradle	
++++ /dev/null	
+@@ -1,39 +0,0 @@
+-plugins {
+-    id 'com.android.application'
+-}
+-
+-android {
+-    namespace 'db.labs'
+-    compileSdk 32
+-
+-    defaultConfig {
+-        applicationId "db.labs"
+-        minSdk 21
+-        targetSdk 32
+-        versionCode 1
+-        versionName "1.0"
+-
+-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+-    }
+-
+-    buildTypes {
+-        release {
+-            minifyEnabled false
+-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+-        }
+-    }
+-    compileOptions {
+-        sourceCompatibility JavaVersion.VERSION_1_8
+-        targetCompatibility JavaVersion.VERSION_1_8
+-    }
+-}
+-
+-dependencies {
+-
+-    implementation 'androidx.appcompat:appcompat:1.5.1'
+-    implementation 'com.google.android.material:material:1.6.1'
+-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+-    testImplementation 'junit:junit:4.13.2'
+-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+-}
+\ No newline at end of file
+Index: ../lab4db/app/src/main/res/values/colors.xml
+===================================================================
+diff --git a/../lab4db/app/src/main/res/values/colors.xml b/../lab4db/app/src/main/res/values/colors.xml
+deleted file mode 100644
+--- a/../lab4db/app/src/main/res/values/colors.xml	
++++ /dev/null	
+@@ -1,10 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<resources>
+-    <color name="purple_200">#FFBB86FC</color>
+-    <color name="purple_500">#FF6200EE</color>
+-    <color name="purple_700">#FF3700B3</color>
+-    <color name="teal_200">#FF03DAC5</color>
+-    <color name="teal_700">#FF018786</color>
+-    <color name="black">#FF000000</color>
+-    <color name="white">#FFFFFFFF</color>
+-</resources>
+\ No newline at end of file
+Index: ../lab4db/app/src/main/res/xml/data_extraction_rules.xml
+===================================================================
+diff --git a/../lab4db/app/src/main/res/xml/data_extraction_rules.xml b/../lab4db/app/src/main/res/xml/data_extraction_rules.xml
+deleted file mode 100644
+--- a/../lab4db/app/src/main/res/xml/data_extraction_rules.xml	
++++ /dev/null	
+@@ -1,19 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?><!--
+-   Sample data extraction rules file; uncomment and customize as necessary.
+-   See https://developer.android.com/about/versions/12/backup-restore#xml-changes
+-   for details.
+--->
+-<data-extraction-rules>
+-    <cloud-backup>
+-        <!-- TODO: Use <include> and <exclude> to control what is backed up.
+-        <include .../>
+-        <exclude .../>
+-        -->
+-    </cloud-backup>
+-    <!--
+-    <device-transfer>
+-        <include .../>
+-        <exclude .../>
+-    </device-transfer>
+-    -->
+-</data-extraction-rules>
+\ No newline at end of file
+Index: ../lab4db/.idea/vcs.xml
+===================================================================
+diff --git a/../lab4db/.idea/vcs.xml b/../lab4db/.idea/vcs.xml
+deleted file mode 100644
+--- a/../lab4db/.idea/vcs.xml	
++++ /dev/null	
+@@ -1,6 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="VcsDirectoryMappings">
+-    <mapping directory="$PROJECT_DIR$/.." vcs="Git" />
+-  </component>
+-</project>
+\ No newline at end of file
+Index: ../lab4db/app/src/main/res/drawable-v24/ic_launcher_foreground.xml
+===================================================================
+diff --git a/../lab4db/app/src/main/res/drawable-v24/ic_launcher_foreground.xml b/../lab4db/app/src/main/res/drawable-v24/ic_launcher_foreground.xml
+deleted file mode 100644
+--- a/../lab4db/app/src/main/res/drawable-v24/ic_launcher_foreground.xml	
++++ /dev/null	
+@@ -1,30 +0,0 @@
+-<vector xmlns:android="http://schemas.android.com/apk/res/android"
+-    xmlns:aapt="http://schemas.android.com/aapt"
+-    android:width="108dp"
+-    android:height="108dp"
+-    android:viewportWidth="108"
+-    android:viewportHeight="108">
+-    <path android:pathData="M31,63.928c0,0 6.4,-11 12.1,-13.1c7.2,-2.6 26,-1.4 26,-1.4l38.1,38.1L107,108.928l-32,-1L31,63.928z">
+-        <aapt:attr name="android:fillColor">
+-            <gradient
+-                android:endX="85.84757"
+-                android:endY="92.4963"
+-                android:startX="42.9492"
+-                android:startY="49.59793"
+-                android:type="linear">
+-                <item
+-                    android:color="#44000000"
+-                    android:offset="0.0" />
+-                <item
+-                    android:color="#00000000"
+-                    android:offset="1.0" />
+-            </gradient>
+-        </aapt:attr>
+-    </path>
+-    <path
+-        android:fillColor="#FFFFFF"
+-        android:fillType="nonZero"
+-        android:pathData="M65.3,45.828l3.8,-6.6c0.2,-0.4 0.1,-0.9 -0.3,-1.1c-0.4,-0.2 -0.9,-0.1 -1.1,0.3l-3.9,6.7c-6.3,-2.8 -13.4,-2.8 -19.7,0l-3.9,-6.7c-0.2,-0.4 -0.7,-0.5 -1.1,-0.3C38.8,38.328 38.7,38.828 38.9,39.228l3.8,6.6C36.2,49.428 31.7,56.028 31,63.928h46C76.3,56.028 71.8,49.428 65.3,45.828zM43.4,57.328c-0.8,0 -1.5,-0.5 -1.8,-1.2c-0.3,-0.7 -0.1,-1.5 0.4,-2.1c0.5,-0.5 1.4,-0.7 2.1,-0.4c0.7,0.3 1.2,1 1.2,1.8C45.3,56.528 44.5,57.328 43.4,57.328L43.4,57.328zM64.6,57.328c-0.8,0 -1.5,-0.5 -1.8,-1.2s-0.1,-1.5 0.4,-2.1c0.5,-0.5 1.4,-0.7 2.1,-0.4c0.7,0.3 1.2,1 1.2,1.8C66.5,56.528 65.6,57.328 64.6,57.328L64.6,57.328z"
+-        android:strokeWidth="1"
+-        android:strokeColor="#00000000" />
+-</vector>
+\ No newline at end of file
+Index: ../lab4db/.idea/misc.xml
+===================================================================
+diff --git a/../lab4db/.idea/misc.xml b/../lab4db/.idea/misc.xml
+deleted file mode 100644
+--- a/../lab4db/.idea/misc.xml	
++++ /dev/null	
+@@ -1,10 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="ExternalStorageConfigurationManager" enabled="true" />
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+-    <output url="file://$PROJECT_DIR$/build/classes" />
+-  </component>
+-  <component name="ProjectType">
+-    <option name="id" value="Android" />
+-  </component>
+-</project>
+\ No newline at end of file
+Index: ../lab4db/.gitignore
+===================================================================
+diff --git a/../lab4db/.gitignore b/../lab4db/.gitignore
+deleted file mode 100644
+--- a/../lab4db/.gitignore	
++++ /dev/null	
+@@ -1,15 +0,0 @@
+-*.iml
+-.gradle
+-/local.properties
+-/.idea/caches
+-/.idea/libraries
+-/.idea/modules.xml
+-/.idea/workspace.xml
+-/.idea/navEditor.xml
+-/.idea/assetWizardSettings.xml
+-.DS_Store
+-/build
+-/captures
+-.externalNativeBuild
+-.cxx
+-local.properties
+Index: ../lab4db/settings.gradle
+===================================================================
+diff --git a/../lab4db/settings.gradle b/../lab4db/settings.gradle
+deleted file mode 100644
+--- a/../lab4db/settings.gradle	
++++ /dev/null	
+@@ -1,16 +0,0 @@
+-pluginManagement {
+-    repositories {
+-        gradlePluginPortal()
+-        google()
+-        mavenCentral()
+-    }
+-}
+-dependencyResolutionManagement {
+-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+-    repositories {
+-        google()
+-        mavenCentral()
+-    }
+-}
+-rootProject.name = "lab4(db)"
+-include ':app'
+Index: ../lab4db/app/src/androidTest/java/db/labs/ExampleInstrumentedTest.java
+===================================================================
+diff --git a/../lab4db/app/src/androidTest/java/db/labs/ExampleInstrumentedTest.java b/../lab4db/app/src/androidTest/java/db/labs/ExampleInstrumentedTest.java
+deleted file mode 100644
+--- a/../lab4db/app/src/androidTest/java/db/labs/ExampleInstrumentedTest.java	
++++ /dev/null	
+@@ -1,26 +0,0 @@
+-package db.labs;
+-
+-import android.content.Context;
+-
+-import androidx.test.platform.app.InstrumentationRegistry;
+-import androidx.test.ext.junit.runners.AndroidJUnit4;
+-
+-import org.junit.Test;
+-import org.junit.runner.RunWith;
+-
+-import static org.junit.Assert.*;
+-
+-/**
+- * Instrumented test, which will execute on an Android device.
+- *
+- * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
+- */
+-@RunWith(AndroidJUnit4.class)
+-public class ExampleInstrumentedTest {
+-    @Test
+-    public void useAppContext() {
+-        // Context of the app under test.
+-        Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
+-        assertEquals("db.labs", appContext.getPackageName());
+-    }
+-}
+\ No newline at end of file
+Index: ../lab4db/build.gradle
+===================================================================
+diff --git a/../lab4db/build.gradle b/../lab4db/build.gradle
+deleted file mode 100644
+--- a/../lab4db/build.gradle	
++++ /dev/null	
+@@ -1,5 +0,0 @@
+-// Top-level build file where you can add configuration options common to all sub-projects/modules.
+-plugins {
+-    id 'com.android.application' version '7.3.0' apply false
+-    id 'com.android.library' version '7.3.0' apply false
+-}
+\ No newline at end of file
+Index: ../lab4db/app/src/main/res/drawable/ic_launcher_background.xml
+===================================================================
+diff --git a/../lab4db/app/src/main/res/drawable/ic_launcher_background.xml b/../lab4db/app/src/main/res/drawable/ic_launcher_background.xml
+deleted file mode 100644
+--- a/../lab4db/app/src/main/res/drawable/ic_launcher_background.xml	
++++ /dev/null	
+@@ -1,170 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<vector xmlns:android="http://schemas.android.com/apk/res/android"
+-    android:width="108dp"
+-    android:height="108dp"
+-    android:viewportWidth="108"
+-    android:viewportHeight="108">
+-    <path
+-        android:fillColor="#3DDC84"
+-        android:pathData="M0,0h108v108h-108z" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M9,0L9,108"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M19,0L19,108"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M29,0L29,108"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M39,0L39,108"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M49,0L49,108"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M59,0L59,108"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M69,0L69,108"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M79,0L79,108"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M89,0L89,108"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M99,0L99,108"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M0,9L108,9"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M0,19L108,19"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M0,29L108,29"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M0,39L108,39"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M0,49L108,49"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M0,59L108,59"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M0,69L108,69"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M0,79L108,79"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M0,89L108,89"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M0,99L108,99"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M19,29L89,29"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M19,39L89,39"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M19,49L89,49"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M19,59L89,59"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M19,69L89,69"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M19,79L89,79"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M29,19L29,89"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M39,19L39,89"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M49,19L49,89"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M59,19L59,89"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M69,19L69,89"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M79,19L79,89"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-</vector>
+Index: ../lab4db/.idea/compiler.xml
+===================================================================
+diff --git a/../lab4db/.idea/compiler.xml b/../lab4db/.idea/compiler.xml
+deleted file mode 100644
+--- a/../lab4db/.idea/compiler.xml	
++++ /dev/null	
+@@ -1,6 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="CompilerConfiguration">
+-    <bytecodeTargetLevel target="11" />
+-  </component>
+-</project>
+\ No newline at end of file
+Index: ../lab4db/app/src/main/AndroidManifest.xml
+===================================================================
+diff --git a/../lab4db/app/src/main/AndroidManifest.xml b/../lab4db/app/src/main/AndroidManifest.xml
+deleted file mode 100644
+--- a/../lab4db/app/src/main/AndroidManifest.xml	
++++ /dev/null	
+@@ -1,30 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+-    xmlns:tools="http://schemas.android.com/tools">
+-
+-    <application
+-        android:allowBackup="true"
+-        android:dataExtractionRules="@xml/data_extraction_rules"
+-        android:fullBackupContent="@xml/backup_rules"
+-        android:icon="@mipmap/ic_launcher"
+-        android:label="@string/app_name"
+-        android:roundIcon="@mipmap/ic_launcher_round"
+-        android:supportsRtl="true"
+-        android:theme="@style/Theme.Lab4db"
+-        tools:targetApi="31">
+-        <activity
+-            android:name=".MainActivity"
+-            android:exported="true">
+-            <intent-filter>
+-                <action android:name="android.intent.action.MAIN" />
+-
+-                <category android:name="android.intent.category.LAUNCHER" />
+-            </intent-filter>
+-
+-            <meta-data
+-                android:name="android.app.lib_name"
+-                android:value="" />
+-        </activity>
+-    </application>
+-
+-</manifest>
+\ No newline at end of file
+Index: ../lab4db/app/src/main/java/db/labs/MainActivity.java
+===================================================================
+diff --git a/../lab4db/app/src/main/java/db/labs/MainActivity.java b/../lab4db/app/src/main/java/db/labs/MainActivity.java
+deleted file mode 100644
+--- a/../lab4db/app/src/main/java/db/labs/MainActivity.java	
++++ /dev/null	
+@@ -1,130 +0,0 @@
+-package db.labs;
+-
+-import androidx.appcompat.app.AlertDialog;
+-import androidx.appcompat.app.AppCompatActivity;
+-
+-import android.content.DialogInterface;
+-import android.os.Bundle;
+-import android.util.Log;
+-import android.view.View;
+-import android.widget.EditText;
+-import android.widget.TextView;
+-import android.widget.Toast;
+-
+-import java.io.BufferedReader;
+-import java.io.BufferedWriter;
+-import java.io.File;
+-import java.io.FileReader;
+-import java.io.FileWriter;
+-import java.io.IOException;
+-
+-public class MainActivity extends AppCompatActivity {
+-    File f;
+-
+-    @Override
+-    protected void onCreate(Bundle savedInstanceState) {
+-        super.onCreate(savedInstanceState);
+-        setContentView(R.layout.activity_main);
+-
+-        String fname = "Base_Lab.txt";
+-        f = new File(super.getFilesDir(), fname);
+-        boolean rc = ExistBase(fname);
+-
+-        if (!rc) {
+-            AlertDialog.Builder b = new AlertDialog.Builder(this);
+-            try {
+-                f.createNewFile();
+-                Log.d("Log_02", "Файл " + fname + " создан");
+-
+-                b.setTitle("Создаётся файл " + fname).setPositiveButton("Да",
+-                        new DialogInterface.OnClickListener() {
+-                            @Override
+-                            public void onClick(DialogInterface dialogInterface, int i) {
+-                                Log.d("Log_02", "Создание файла " + fname);
+-                            }
+-                        });
+-                AlertDialog ad = b.create();
+-                ad.show();
+-            }
+-            catch (IOException e) {
+-                Log.d("Log_02", "Файл " + fname + " не создан");
+-            }
+-        }
+-        else {
+-            ReadLine();
+-        }
+-    }
+-
+-    public void InputClick(View view) {
+-        EditText name = findViewById(R.id.editTextName);
+-        EditText surname = findViewById(R.id.editTextSurname);
+-        if (name.getText().toString().trim().length() >= 1 &&
+-                surname.getText().toString().trim().length() >= 1) {
+-            WriteLine(surname.getText().toString(), name.getText().toString());
+-
+-            name.setText("");
+-            surname.setText("");
+-        }
+-        else {
+-            Toast.makeText(this, "Введите ключ и значение", Toast.LENGTH_SHORT).show();
+-        }
+-    }
+-
+-    private boolean ExistBase(String fname) {
+-        boolean rc;
+-        File f = new File(super.getFilesDir(), fname);
+-        if (rc = f.exists()) {
+-            Log.d("Log_02", "Файл " + fname + " существует");
+-        }
+-        else {
+-            Log.d("Log_02", "Файл " + fname + " не найден");
+-        }
+-        return rc;
+-    }
+-
+-    private void WriteLine(String surname, String name) {
+-        String s = surname + ";" + name + ";" + "\r\n";
+-        try {
+-            FileWriter fw = new FileWriter(f, true);
+-            BufferedWriter bw = new BufferedWriter(fw);
+-
+-            bw.write(s);
+-
+-            bw.close();
+-            fw.close();
+-
+-            Log.d("Log_02", "Данные записаны");
+-        }
+-        catch (IOException e) {
+-            Log.d("Log_02", "Данные не записаны");
+-        }
+-
+-        ReadLine();
+-    }
+-
+-    private void ReadLine() {
+-        try {
+-            FileReader fr = new FileReader(f);
+-            BufferedReader br = new BufferedReader(fr);
+-            TextView resultRead = findViewById(R.id.readResult);
+-
+-            String line = "";
+-            resultRead.setText("");
+-
+-            try {
+-                while ((line = br.readLine()) != null) {
+-                    resultRead.append(line + "\n");
+-                }
+-                Log.d("Log_02", "Данные прочитаны");
+-            } catch (IOException e) {
+-                Log.d("Log_02", e.getMessage());
+-            }
+-
+-            br.close();
+-            fr.close();
+-        }
+-        catch (IOException e) {
+-            Log.d("Log_02", "Файл не открыт");
+-        }
+-    }
+-}
+\ No newline at end of file
+Index: ../lab4db/app/src/main/res/values-night/themes.xml
+===================================================================
+diff --git a/../lab4db/app/src/main/res/values-night/themes.xml b/../lab4db/app/src/main/res/values-night/themes.xml
+deleted file mode 100644
+--- a/../lab4db/app/src/main/res/values-night/themes.xml	
++++ /dev/null	
+@@ -1,16 +0,0 @@
+-<resources xmlns:tools="http://schemas.android.com/tools">
+-    <!-- Base application theme. -->
+-    <style name="Theme.Lab4db" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+-        <!-- Primary brand color. -->
+-        <item name="colorPrimary">@color/purple_200</item>
+-        <item name="colorPrimaryVariant">@color/purple_700</item>
+-        <item name="colorOnPrimary">@color/black</item>
+-        <!-- Secondary brand color. -->
+-        <item name="colorSecondary">@color/teal_200</item>
+-        <item name="colorSecondaryVariant">@color/teal_200</item>
+-        <item name="colorOnSecondary">@color/black</item>
+-        <!-- Status bar color. -->
+-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+-        <!-- Customize your theme here. -->
+-    </style>
+-</resources>
+\ No newline at end of file
+Index: ../lab4db/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml
+===================================================================
+diff --git a/../lab4db/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml b/../lab4db/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml
+deleted file mode 100644
+--- a/../lab4db/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml	
++++ /dev/null	
+@@ -1,5 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+-    <background android:drawable="@drawable/ic_launcher_background" />
+-    <foreground android:drawable="@drawable/ic_launcher_foreground" />
+-</adaptive-icon>
+\ No newline at end of file
+Index: ../lab4db/gradle.properties
+===================================================================
+diff --git a/../lab4db/gradle.properties b/../lab4db/gradle.properties
+deleted file mode 100644
+--- a/../lab4db/gradle.properties	
++++ /dev/null	
+@@ -1,21 +0,0 @@
+-# Project-wide Gradle settings.
+-# IDE (e.g. Android Studio) users:
+-# Gradle settings configured through the IDE *will override*
+-# any settings specified in this file.
+-# For more details on how to configure your build environment visit
+-# http://www.gradle.org/docs/current/userguide/build_environment.html
+-# Specifies the JVM arguments used for the daemon process.
+-# The setting is particularly useful for tweaking memory settings.
+-org.gradle.jvmargs=-Xmx2048m -Dfile.encoding=UTF-8
+-# When configured, Gradle will run in incubating parallel mode.
+-# This option should only be used with decoupled projects. More details, visit
+-# http://www.gradle.org/docs/current/userguide/multi_project_builds.html#sec:decoupled_projects
+-# org.gradle.parallel=true
+-# AndroidX package structure to make it clearer which packages are bundled with the
+-# Android operating system, and which are packaged with your app's APK
+-# https://developer.android.com/topic/libraries/support-library/androidx-rn
+-android.useAndroidX=true
+-# Enables namespacing of each library's R class so that its R class includes only the
+-# resources declared in the library itself and none from the library's dependencies,
+-# thereby reducing the size of the R class for that library
+-android.nonTransitiveRClass=true
+\ No newline at end of file
+Index: ../lab4db/app/src/main/res/values/strings.xml
+===================================================================
+diff --git a/../lab4db/app/src/main/res/values/strings.xml b/../lab4db/app/src/main/res/values/strings.xml
+deleted file mode 100644
+--- a/../lab4db/app/src/main/res/values/strings.xml	
++++ /dev/null	
+@@ -1,3 +0,0 @@
+-<resources>
+-    <string name="app_name">lab4(db)</string>
+-</resources>
+\ No newline at end of file
+Index: ../lab4db/app/.gitignore
+===================================================================
+diff --git a/../lab4db/app/.gitignore b/../lab4db/app/.gitignore
+deleted file mode 100644
+--- a/../lab4db/app/.gitignore	
++++ /dev/null	
+@@ -1,1 +0,0 @@
+-/build
+\ No newline at end of file
+Index: ../lab4db/app/src/test/java/db/labs/ExampleUnitTest.java
+===================================================================
+diff --git a/../lab4db/app/src/test/java/db/labs/ExampleUnitTest.java b/../lab4db/app/src/test/java/db/labs/ExampleUnitTest.java
+deleted file mode 100644
+--- a/../lab4db/app/src/test/java/db/labs/ExampleUnitTest.java	
++++ /dev/null	
+@@ -1,17 +0,0 @@
+-package db.labs;
+-
+-import org.junit.Test;
+-
+-import static org.junit.Assert.*;
+-
+-/**
+- * Example local unit test, which will execute on the development machine (host).
+- *
+- * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
+- */
+-public class ExampleUnitTest {
+-    @Test
+-    public void addition_isCorrect() {
+-        assertEquals(4, 2 + 2);
+-    }
+-}
+\ No newline at end of file
+Index: ../lab4db/gradle/wrapper/gradle-wrapper.properties
+===================================================================
+diff --git a/../lab4db/gradle/wrapper/gradle-wrapper.properties b/../lab4db/gradle/wrapper/gradle-wrapper.properties
+deleted file mode 100644
+--- a/../lab4db/gradle/wrapper/gradle-wrapper.properties	
++++ /dev/null	
+@@ -1,6 +0,0 @@
+-#Thu Oct 13 08:07:48 MSK 2022
+-distributionBase=GRADLE_USER_HOME
+-distributionUrl=https\://services.gradle.org/distributions/gradle-7.4-bin.zip
+-distributionPath=wrapper/dists
+-zipStorePath=wrapper/dists
+-zipStoreBase=GRADLE_USER_HOME
+Index: ../lab4db/app/src/main/res/values/themes.xml
+===================================================================
+diff --git a/../lab4db/app/src/main/res/values/themes.xml b/../lab4db/app/src/main/res/values/themes.xml
+deleted file mode 100644
+--- a/../lab4db/app/src/main/res/values/themes.xml	
++++ /dev/null	
+@@ -1,16 +0,0 @@
+-<resources xmlns:tools="http://schemas.android.com/tools">
+-    <!-- Base application theme. -->
+-    <style name="Theme.Lab4db" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+-        <!-- Primary brand color. -->
+-        <item name="colorPrimary">@color/purple_500</item>
+-        <item name="colorPrimaryVariant">@color/purple_700</item>
+-        <item name="colorOnPrimary">@color/white</item>
+-        <!-- Secondary brand color. -->
+-        <item name="colorSecondary">@color/teal_200</item>
+-        <item name="colorSecondaryVariant">@color/teal_700</item>
+-        <item name="colorOnSecondary">@color/black</item>
+-        <!-- Status bar color. -->
+-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+-        <!-- Customize your theme here. -->
+-    </style>
+-</resources>
+\ No newline at end of file
+Index: ../lab4db/app/src/main/res/xml/backup_rules.xml
+===================================================================
+diff --git a/../lab4db/app/src/main/res/xml/backup_rules.xml b/../lab4db/app/src/main/res/xml/backup_rules.xml
+deleted file mode 100644
+--- a/../lab4db/app/src/main/res/xml/backup_rules.xml	
++++ /dev/null	
+@@ -1,13 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?><!--
+-   Sample backup rules file; uncomment and customize as necessary.
+-   See https://developer.android.com/guide/topics/data/autobackup
+-   for details.
+-   Note: This file is ignored for devices older that API 31
+-   See https://developer.android.com/about/versions/12/backup-restore
+--->
+-<full-backup-content>
+-    <!--
+-   <include domain="sharedpref" path="."/>
+-   <exclude domain="sharedpref" path="device.xml"/>
+--->
+-</full-backup-content>
+\ No newline at end of file
+Index: ../lab4db/.idea/.gitignore
+===================================================================
+diff --git a/../lab4db/.idea/.gitignore b/../lab4db/.idea/.gitignore
+deleted file mode 100644
+--- a/../lab4db/.idea/.gitignore	
++++ /dev/null	
+@@ -1,3 +0,0 @@
+-# Default ignored files
+-/shelf/
+-/workspace.xml
+Index: ../lab4db/.idea/gradle.xml
+===================================================================
+diff --git a/../lab4db/.idea/gradle.xml b/../lab4db/.idea/gradle.xml
+deleted file mode 100644
+--- a/../lab4db/.idea/gradle.xml	
++++ /dev/null	
+@@ -1,19 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="GradleMigrationSettings" migrationVersion="1" />
+-  <component name="GradleSettings">
+-    <option name="linkedExternalProjectsSettings">
+-      <GradleProjectSettings>
+-        <option name="testRunner" value="GRADLE" />
+-        <option name="distributionType" value="DEFAULT_WRAPPED" />
+-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+-        <option name="modules">
+-          <set>
+-            <option value="$PROJECT_DIR$" />
+-            <option value="$PROJECT_DIR$/app" />
+-          </set>
+-        </option>
+-      </GradleProjectSettings>
+-    </option>
+-  </component>
+-</project>
+\ No newline at end of file
+Index: ../lab8/.idea/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../lab8/.idea/.gitignore b/../lab8/.idea/.gitignore
+new file mode 100644
+--- /dev/null	
++++ b/../lab8/.idea/.gitignore	
+@@ -0,0 +1,3 @@
++# Default ignored files
++/shelf/
++/workspace.xml
+Index: ../case1/AppleTest.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../case1/AppleTest.iml b/../case1/AppleTest.iml
+new file mode 100644
+--- /dev/null	
++++ b/../case1/AppleTest.iml	
+@@ -0,0 +1,82 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
++  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
++    <output url="file://$MODULE_DIR$/target/classes" />
++    <output-test url="file://$MODULE_DIR$/target/test-classes" />
++    <content url="file://$MODULE_DIR$">
++      <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
++      <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
++      <excludeFolder url="file://$MODULE_DIR$/target" />
++    </content>
++    <orderEntry type="inheritedJdk" />
++    <orderEntry type="sourceFolder" forTests="false" />
++    <orderEntry type="library" name="Maven: org.seleniumhq.selenium:selenium-java:4.5.3" level="project" />
++    <orderEntry type="library" name="Maven: org.seleniumhq.selenium:selenium-api:4.5.3" level="project" />
++    <orderEntry type="library" name="Maven: org.seleniumhq.selenium:selenium-chrome-driver:4.5.3" level="project" />
++    <orderEntry type="library" name="Maven: com.google.auto.service:auto-service-annotations:1.0.1" level="project" />
++    <orderEntry type="library" name="Maven: com.google.auto.service:auto-service:1.0.1" level="project" />
++    <orderEntry type="library" name="Maven: com.google.auto:auto-common:1.2" level="project" />
++    <orderEntry type="library" name="Maven: com.google.guava:guava:31.1-jre" level="project" />
++    <orderEntry type="library" name="Maven: com.google.guava:failureaccess:1.0.1" level="project" />
++    <orderEntry type="library" name="Maven: com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava" level="project" />
++    <orderEntry type="library" name="Maven: org.checkerframework:checker-qual:3.12.0" level="project" />
++    <orderEntry type="library" name="Maven: com.google.errorprone:error_prone_annotations:2.11.0" level="project" />
++    <orderEntry type="library" name="Maven: com.google.j2objc:j2objc-annotations:1.3" level="project" />
++    <orderEntry type="library" name="Maven: org.seleniumhq.selenium:selenium-chromium-driver:4.5.3" level="project" />
++    <orderEntry type="library" name="Maven: org.seleniumhq.selenium:selenium-json:4.5.3" level="project" />
++    <orderEntry type="library" name="Maven: org.seleniumhq.selenium:selenium-devtools-v104:4.5.3" level="project" />
++    <orderEntry type="library" name="Maven: org.seleniumhq.selenium:selenium-devtools-v105:4.5.3" level="project" />
++    <orderEntry type="library" name="Maven: org.seleniumhq.selenium:selenium-devtools-v106:4.5.3" level="project" />
++    <orderEntry type="library" name="Maven: org.seleniumhq.selenium:selenium-devtools-v85:4.5.3" level="project" />
++    <orderEntry type="library" name="Maven: org.seleniumhq.selenium:selenium-edge-driver:4.5.3" level="project" />
++    <orderEntry type="library" name="Maven: org.seleniumhq.selenium:selenium-firefox-driver:4.5.3" level="project" />
++    <orderEntry type="library" name="Maven: org.seleniumhq.selenium:selenium-ie-driver:4.5.3" level="project" />
++    <orderEntry type="library" name="Maven: org.seleniumhq.selenium:selenium-remote-driver:4.5.3" level="project" />
++    <orderEntry type="library" name="Maven: io.netty:netty-buffer:4.1.84.Final" level="project" />
++    <orderEntry type="library" name="Maven: io.netty:netty-codec-http:4.1.84.Final" level="project" />
++    <orderEntry type="library" name="Maven: io.netty:netty-codec:4.1.84.Final" level="project" />
++    <orderEntry type="library" name="Maven: io.netty:netty-handler:4.1.84.Final" level="project" />
++    <orderEntry type="library" name="Maven: io.netty:netty-common:4.1.84.Final" level="project" />
++    <orderEntry type="library" name="Maven: io.netty:netty-transport-classes-epoll:4.1.84.Final" level="project" />
++    <orderEntry type="library" name="Maven: io.netty:netty-transport-classes-kqueue:4.1.84.Final" level="project" />
++    <orderEntry type="library" name="Maven: io.netty:netty-transport-native-epoll:4.1.84.Final" level="project" />
++    <orderEntry type="library" name="Maven: io.netty:netty-transport-native-kqueue:4.1.84.Final" level="project" />
++    <orderEntry type="library" name="Maven: io.netty:netty-transport-native-unix-common:4.1.84.Final" level="project" />
++    <orderEntry type="library" name="Maven: io.netty:netty-transport:4.1.84.Final" level="project" />
++    <orderEntry type="library" name="Maven: io.netty:netty-resolver:4.1.84.Final" level="project" />
++    <orderEntry type="library" name="Maven: io.opentelemetry:opentelemetry-api:1.19.0" level="project" />
++    <orderEntry type="library" name="Maven: io.opentelemetry:opentelemetry-context:1.19.0" level="project" />
++    <orderEntry type="library" name="Maven: io.opentelemetry:opentelemetry-exporter-logging:1.19.0" level="project" />
++    <orderEntry type="library" name="Maven: io.opentelemetry:opentelemetry-sdk-metrics:1.19.0" level="project" />
++    <orderEntry type="library" name="Maven: io.opentelemetry:opentelemetry-sdk-logs:1.19.0-alpha" level="project" />
++    <orderEntry type="library" name="Maven: io.opentelemetry:opentelemetry-api-logs:1.19.0-alpha" level="project" />
++    <orderEntry type="library" name="Maven: io.opentelemetry:opentelemetry-sdk-common:1.19.0" level="project" />
++    <orderEntry type="library" name="Maven: io.opentelemetry:opentelemetry-sdk-extension-autoconfigure-spi:1.19.0" level="project" />
++    <orderEntry type="library" name="Maven: io.opentelemetry:opentelemetry-sdk-extension-autoconfigure:1.19.0-alpha" level="project" />
++    <orderEntry type="library" scope="RUNTIME" name="Maven: io.opentelemetry:opentelemetry-exporter-common:1.19.0" level="project" />
++    <orderEntry type="library" name="Maven: io.opentelemetry:opentelemetry-sdk-trace:1.19.0" level="project" />
++    <orderEntry type="library" name="Maven: io.opentelemetry:opentelemetry-sdk:1.19.0" level="project" />
++    <orderEntry type="library" name="Maven: io.opentelemetry:opentelemetry-semconv:1.19.0-alpha" level="project" />
++    <orderEntry type="library" name="Maven: io.ous:jtoml:2.0.0" level="project" />
++    <orderEntry type="library" name="Maven: net.bytebuddy:byte-buddy:1.12.18" level="project" />
++    <orderEntry type="library" name="Maven: org.apache.commons:commons-exec:1.3" level="project" />
++    <orderEntry type="library" name="Maven: org.asynchttpclient:async-http-client:2.12.3" level="project" />
++    <orderEntry type="library" name="Maven: org.asynchttpclient:async-http-client-netty-utils:2.12.3" level="project" />
++    <orderEntry type="library" name="Maven: io.netty:netty-codec-socks:4.1.60.Final" level="project" />
++    <orderEntry type="library" name="Maven: io.netty:netty-handler-proxy:4.1.60.Final" level="project" />
++    <orderEntry type="library" name="Maven: io.netty:netty-transport-native-epoll:linux-x86_64:4.1.60.Final" level="project" />
++    <orderEntry type="library" name="Maven: io.netty:netty-transport-native-kqueue:osx-x86_64:4.1.60.Final" level="project" />
++    <orderEntry type="library" name="Maven: org.reactivestreams:reactive-streams:1.0.3" level="project" />
++    <orderEntry type="library" name="Maven: com.typesafe.netty:netty-reactive-streams:2.0.4" level="project" />
++    <orderEntry type="library" name="Maven: com.sun.activation:jakarta.activation:1.2.2" level="project" />
++    <orderEntry type="library" name="Maven: org.seleniumhq.selenium:selenium-http:4.5.3" level="project" />
++    <orderEntry type="library" name="Maven: dev.failsafe:failsafe:3.3.0" level="project" />
++    <orderEntry type="library" name="Maven: org.seleniumhq.selenium:selenium-safari-driver:4.5.3" level="project" />
++    <orderEntry type="library" name="Maven: org.seleniumhq.selenium:selenium-support:4.5.3" level="project" />
++    <orderEntry type="library" scope="TEST" name="Maven: org.testng:testng:7.6.1" level="project" />
++    <orderEntry type="library" name="Maven: com.google.code.findbugs:jsr305:3.0.2" level="project" />
++    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.36" level="project" />
++    <orderEntry type="library" name="Maven: com.beust:jcommander:1.82" level="project" />
++    <orderEntry type="library" scope="TEST" name="Maven: org.webjars:jquery:3.6.0" level="project" />
++  </component>
++</module>
+\ No newline at end of file
+Index: ../oop3k1s/RoomDbApp-master/RoomDemoApp/.idea/modules/RoomDemo.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../oop3k1s/RoomDbApp-master/RoomDemoApp/.idea/modules/RoomDemo.iml b/../oop3k1s/RoomDbApp-master/RoomDemoApp/.idea/modules/RoomDemo.iml
+new file mode 100644
+--- /dev/null	
++++ b/../oop3k1s/RoomDbApp-master/RoomDemoApp/.idea/modules/RoomDemo.iml	
+@@ -0,0 +1,19 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module external.linked.project.id="RoomDemo" external.linked.project.path="$MODULE_DIR$/../.." external.root.project.path="$MODULE_DIR$/../.." external.system.id="GRADLE" external.system.module.group="" external.system.module.version="unspecified" type="JAVA_MODULE" version="4">
++  <component name="FacetManager">
++    <facet type="java-gradle" name="Java-Gradle">
++      <configuration>
++        <option name="BUILDABLE" value="false" />
++      </configuration>
++    </facet>
++  </component>
++  <component name="NewModuleRootManager">
++    <exclude-output />
++    <content url="file://$MODULE_DIR$/../..">
++      <excludeFolder url="file://$MODULE_DIR$/../../.gradle" />
++      <excludeFolder url="file://$MODULE_DIR$/../../build" />
++    </content>
++    <orderEntry type="inheritedJdk" />
++    <orderEntry type="sourceFolder" forTests="false" />
++  </component>
++</module>
+\ No newline at end of file
+Index: .idea/.gitignore
+===================================================================
+diff --git a/.idea/.gitignore b/.idea/.gitignore
+new file mode 100644
+--- /dev/null	
++++ b/.idea/.gitignore	
+@@ -0,0 +1,3 @@
++# Default ignored files
++/shelf/
++/workspace.xml
+Index: ../oop3k1s/RoomDbApp-master/RoomDemoApp/.idea/modules/RoomDemoApp.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../oop3k1s/RoomDbApp-master/RoomDemoApp/.idea/modules/RoomDemoApp.iml b/../oop3k1s/RoomDbApp-master/RoomDemoApp/.idea/modules/RoomDemoApp.iml
+new file mode 100644
+--- /dev/null	
++++ b/../oop3k1s/RoomDbApp-master/RoomDemoApp/.idea/modules/RoomDemoApp.iml	
+@@ -0,0 +1,18 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module type="JAVA_MODULE" version="4">
++  <component name="FacetManager">
++    <facet type="android-gradle" name="Android-Gradle">
++      <configuration>
++        <option name="GRADLE_PROJECT_PATH" value=":" />
++        <option name="LAST_SUCCESSFUL_SYNC_AGP_VERSION" />
++        <option name="LAST_KNOWN_AGP_VERSION" />
++      </configuration>
++    </facet>
++  </component>
++  <component name="NewModuleRootManager" inherit-compiler-output="true">
++    <exclude-output />
++    <content url="file://$MODULE_DIR$/../.." />
++    <orderEntry type="inheritedJdk" />
++    <orderEntry type="sourceFolder" forTests="false" />
++  </component>
++</module>
+\ No newline at end of file
+Index: ../oop3k1s/RoomDbApp-master/RoomDemoApp/.idea/modules/app/RoomDemo.app.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../oop3k1s/RoomDbApp-master/RoomDemoApp/.idea/modules/app/RoomDemo.app.iml b/../oop3k1s/RoomDbApp-master/RoomDemoApp/.idea/modules/app/RoomDemo.app.iml
+new file mode 100644
+--- /dev/null	
++++ b/../oop3k1s/RoomDbApp-master/RoomDemoApp/.idea/modules/app/RoomDemo.app.iml	
+@@ -0,0 +1,162 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module external.linked.project.id=":app" external.linked.project.path="$MODULE_DIR$/../../../app" external.root.project.path="$MODULE_DIR$/../../.." external.system.id="GRADLE" external.system.module.group="RoomDemo" external.system.module.version="unspecified" type="JAVA_MODULE" version="4">
++  <component name="FacetManager">
++    <facet type="android-gradle" name="Android-Gradle">
++      <configuration>
++        <option name="GRADLE_PROJECT_PATH" value=":app" />
++        <option name="LAST_SUCCESSFUL_SYNC_AGP_VERSION" />
++        <option name="LAST_KNOWN_AGP_VERSION" value="4.0.0" />
++      </configuration>
++    </facet>
++    <facet type="kotlin-language" name="Kotlin">
++      <configuration version="4" platform="JVM 1.6" allPlatforms="JVM [1.6]" useProjectSettings="false">
++        <compilerSettings>
++          <option name="additionalArguments" value="-Xallow-no-source-files" />
++        </compilerSettings>
++        <compilerArguments>
++          <option name="destination" value="$MODULE_DIR$/../../../app/build/tmp/kotlin-classes/debug" />
++          <option name="classpath" value="$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d8ecf77db437180f5945578a4d2539b5/jetified-kotlin-android-extensions-runtime-1.3.72.jar;C:/Users/Sasha/.gradle/caches/transforms-2/files-2.1/25b696cc5bf1375c49886a05e5663b49/jetified-core-ktx-1.3.1-api.jar;C:/Users/Sasha/.gradle/caches/transforms-2/files-2.1/d7918a34a298ce6afd050963fe8285f4/jetified-kotlin-stdlib-1.3.72.jar;C:/Users/Sasha/.gradle/caches/transforms-2/files-2.1/7a610442c037d944b5571b97c8bc4008/jetified-kotlin-stdlib-common-1.3.72.jar;C:/Users/Sasha/.gradle/caches/transforms-2/files-2.1/b5ebe2cccd14b8a63e84eff597aa9d39/jetified-annotations-13.0.jar;C:/Users/Sasha/.gradle/caches/transforms-2/files-2.1/6346ad293ce0dc7ca4519590745d37e2/appcompat-1.1.0-api.jar;C:/Users/Sasha/.gradle/caches/transforms-2/files-2.1/f04b6c9fcfc439574505aea43d012ea1/recyclerview-1.2.0-alpha05-api.jar;C:/Users/Sasha/.gradle/caches/transforms-2/files-2.1/83d82c57ac14502a44fb6f1f216c42bb/lifecycle-extensions-2.2.0-api.jar;C:/Users/Sasha/.gradle/caches/transforms-2/files-2.1/53e72fe801616bf982300321f6dba5e2/fragment-1.2.0-api.jar;C:/Users/Sasha/.gradle/caches/transforms-2/files-2.1/573ac89088ae58f443ffe889cc5549e3/jetified-appcompat-resources-1.1.0-api.jar;C:/Users/Sasha/.gradle/caches/transforms-2/files-2.1/bbaf16160d0fa95398e1045beb1d0010/drawerlayout-1.0.0-api.jar;C:/Users/Sasha/.gradle/caches/transforms-2/files-2.1/3fd228e3ff76b95fe97ea7f2e2a78818/viewpager-1.0.0-api.jar;C:/Users/Sasha/.gradle/caches/transforms-2/files-2.1/5c99a88195e5ff342896ce52cc5bba45/customview-1.0.0-api.jar;C:/Users/Sasha/.gradle/caches/transforms-2/files-2.1/88de42c7f900dd67b54e6b2166f3a37a/loader-1.0.0-api.jar;C:/Users/Sasha/.gradle/caches/transforms-2/files-2.1/dcf24f6a229cf34eb3d88a809ef3568b/jetified-activity-1.1.0-api.jar;C:/Users/Sasha/.gradle/caches/transforms-2/files-2.1/09f1405faca12a7c354e1276ae92d60a/vectordrawable-animated-1.1.0-api.jar;C:/Users/Sasha/.gradle/caches/transforms-2/files-2.1/0e5da3aaa8fb5db4904296d6b2ff36c1/vectordrawable-1.1.0-api.jar;C:/Users/Sasha/.gradle/caches/transforms-2/files-2.1/e470b46ca0043c2fea3df3cf7639d4fc/core-1.3.1-api.jar;C:/Users/Sasha/.gradle/caches/transforms-2/files-2.1/381652ed594b59d009b9f9d9beafbde7/cursoradapter-1.0.0-api.jar;C:/Users/Sasha/.gradle/caches/transforms-2/files-2.1/81a870a6efb8a52c1bb894a01757303c/versionedparcelable-1.1.0-api.jar;C:/Users/Sasha/.gradle/caches/modules-2/files-2.1/androidx.collection/collection/1.1.0/1f27220b47669781457de0d600849a5de0e89909/collection-1.1.0.jar;C:/Users/Sasha/.gradle/caches/transforms-2/files-2.1/1018729da51693e98a9046f06b34c55f/jetified-lifecycle-process-2.2.0-api.jar;C:/Users/Sasha/.gradle/caches/transforms-2/files-2.1/437da38936d14aab8ad58c05211a87dc/jetified-lifecycle-service-2.2.0-api.jar;C:/Users/Sasha/.gradle/caches/transforms-2/files-2.1/cc3f3b2ba388f574726d68bb883d5d80/lifecycle-runtime-2.2.0-api.jar;C:/Users/Sasha/.gradle/caches/transforms-2/files-2.1/87a62ecaa35ad9de9c9a05cff3a902e8/lifecycle-livedata-2.2.0-api.jar;C:/Users/Sasha/.gradle/caches/transforms-2/files-2.1/1a3e3785e968db34c159b03153c97707/jetified-lifecycle-viewmodel-savedstate-1.0.0-api.jar;C:/Users/Sasha/.gradle/caches/transforms-2/files-2.1/d3d84e5a244fe6423923b1729cb7d8bd/lifecycle-livedata-core-2.2.0-api.jar;C:/Users/Sasha/.gradle/caches/transforms-2/files-2.1/58c596e6ebfd6ecf96548f60b3d5bd89/core-runtime-2.1.0-api.jar;C:/Users/Sasha/.gradle/caches/transforms-2/files-2.1/84ad8542ab1b413d2ea1414d79179160/jetified-savedstate-1.0.0-api.jar;C:/Users/Sasha/.gradle/caches/modules-2/files-2.1/androidx.arch.core/core-common/2.1.0/b3152fc64428c9354344bd89848ecddc09b6f07e/core-common-2.1.0.jar;C:/Users/Sasha/.gradle/caches/modules-2/files-2.1/androidx.lifecycle/lifecycle-common/2.2.0/4ef09a745007778eef83b92f8f23987a8ea59496/lifecycle-common-2.2.0.jar;C:/Users/Sasha/.gradle/caches/transforms-2/files-2.1/0e031252605cacf00ebae4338e5c5c3d/lifecycle-viewmodel-2.2.0-api.jar;C:/Users/Sasha/.gradle/caches/transforms-2/files-2.1/e26eee4051afd5e101654711c8513e61/room-runtime-2.3.0-alpha02-api.jar;C:/Users/Sasha/.gradle/caches/modules-2/files-2.1/androidx.room/room-common/2.3.0-alpha02/21ad6893ea338ba41ea5fd1d459ebd2d91be5551/room-common-2.3.0-alpha02.jar;C:/Users/Sasha/.gradle/caches/transforms-2/files-2.1/6b3bda293fd71351b41bc1b331ec2281/sqlite-framework-2.1.0-api.jar;C:/Users/Sasha/.gradle/caches/transforms-2/files-2.1/75657977e60c0b7b971c9c9139337c6e/sqlite-2.1.0-api.jar;C:/Users/Sasha/.gradle/caches/transforms-2/files-2.1/d85f5e91de901d11959de6be28aac684/interpolator-1.0.0-api.jar;C:/Users/Sasha/.gradle/caches/modules-2/files-2.1/androidx.annotation/annotation/1.1.0/e3a6fb2f40e3a3842e6b7472628ba4ce416ea4c8/annotation-1.1.0.jar;C:/Users/Sasha/.gradle/caches/transforms-2/files-2.1/1ef2874d8575339c91629cbc50556c9d/constraintlayout-1.1.3-api.jar;C:/Users/Sasha/.gradle/caches/modules-2/files-2.1/androidx.constraintlayout/constraintlayout-solver/1.1.3/54abe9ffb22cc9019b0b6fcc10f185cc4e67b34e/constraintlayout-solver-1.1.3.jar;C:/Users/Sasha/AppData/Local/Android/Sdk/platforms/android-29/android.jar" />
++          <option name="noStdlib" value="true" />
++          <option name="noReflect" value="true" />
++          <option name="moduleName" value="app_debug" />
++          <option name="jvmTarget" value="1.6" />
++          <option name="languageVersion" value="1.3" />
++          <option name="apiVersion" value="1.3" />
++          <option name="pluginOptions">
++            <array>
++              <option value="plugin:org.jetbrains.kotlin.android:experimental=false" />
++              <option value="plugin:org.jetbrains.kotlin.android:enabled=true" />
++              <option value="plugin:org.jetbrains.kotlin.android:defaultCacheImplementation=hashMap" />
++            </array>
++          </option>
++          <option name="pluginClasspaths">
++            <array>
++              <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.intellij.deps/trove4j/1.0.20181211/216c2e14b070f334479d800987affe4054cd563f/trove4j-1.0.20181211.jar" />
++              <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-android-extensions/1.3.72/ecbb105a12a9766d2188f454b3bc3aab46cb80b6/kotlin-android-extensions-1.3.72.jar" />
++              <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-compiler-embeddable/1.3.72/fb72232c8fa977d5e07d33c43381ddbdc5edab6/kotlin-compiler-embeddable-1.3.72.jar" />
++              <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-daemon-embeddable/1.3.72/53bbaa2816dbf6bdb85f629451b1fcc88f2164d2/kotlin-daemon-embeddable-1.3.72.jar" />
++              <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-reflect/1.3.72/86613e1a669a701b0c660bfd2af4f82a7ae11fca/kotlin-reflect-1.3.72.jar" />
++              <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-script-runtime/1.3.72/657d8d34d91e1964b4439378c09933e840bfe8d5/kotlin-script-runtime-1.3.72.jar" />
++              <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-common/1.3.72/6ca8bee3d88957eaaaef077c41c908c9940492d8/kotlin-stdlib-common-1.3.72.jar" />
++              <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/1.3.72/8032138f12c0180bc4e51fe139d4c52b46db6109/kotlin-stdlib-1.3.72.jar" />
++              <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/13.0/919f0dfe192fb4e063e7dacadee7f8bb9a2672a9/annotations-13.0.jar" />
++            </array>
++          </option>
++          <option name="errors">
++            <ArgumentParseErrors />
++          </option>
++        </compilerArguments>
++      </configuration>
++    </facet>
++    <facet type="android" name="Android">
++      <configuration>
++        <option name="SELECTED_BUILD_VARIANT" value="debug" />
++        <option name="ASSEMBLE_TASK_NAME" value="assembleDebug" />
++        <option name="COMPILE_JAVA_TASK_NAME" value="compileDebugSources" />
++        <afterSyncTasks>
++          <task>generateDebugSources</task>
++        </afterSyncTasks>
++        <option name="ALLOW_USER_CONFIGURATION" value="false" />
++        <option name="MANIFEST_FILE_RELATIVE_PATH" value="/src/main/AndroidManifest.xml" />
++        <option name="RES_FOLDER_RELATIVE_PATH" value="/src/main/res" />
++        <option name="RES_FOLDERS_RELATIVE_PATH" value="file://$MODULE_DIR$/../../../app/src/main/res;file://$MODULE_DIR$/../../../app/src/debug/res;file://$MODULE_DIR$/../../../app/build/generated/res/rs/debug" />
++        <option name="TEST_RES_FOLDERS_RELATIVE_PATH" value="file://$MODULE_DIR$/../../../app/src/androidTest/res;file://$MODULE_DIR$/../../../app/src/androidTestDebug/res;file://$MODULE_DIR$/../../../app/build/generated/res/rs/androidTest/debug" />
++        <option name="ASSETS_FOLDER_RELATIVE_PATH" value="/src/main/assets" />
++      </configuration>
++    </facet>
++  </component>
++  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_7">
++    <output url="file://$MODULE_DIR$/../../../app/build/intermediates/javac/debug/classes" />
++    <output-test url="file://$MODULE_DIR$/../../../app/build/intermediates/javac/debugUnitTest/classes" />
++    <exclude-output />
++    <content url="file://$MODULE_DIR$/../../../app">
++      <sourceFolder url="file://$MODULE_DIR$/../../../app/build/generated/ap_generated_sources/debug/out" isTestSource="false" generated="true" />
++      <sourceFolder url="file://$MODULE_DIR$/../../../app/build/generated/source/buildConfig/debug" isTestSource="false" generated="true" />
++      <sourceFolder url="file://$MODULE_DIR$/../../../app/build/generated/source/kapt/debug" isTestSource="false" generated="true" />
++      <sourceFolder url="file://$MODULE_DIR$/../../../app/build/generated/source/kaptKotlin/debug" isTestSource="false" />
++      <sourceFolder url="file://$MODULE_DIR$/../../../app/build/generated/source/kaptKotlin/debugAndroidTest" isTestSource="true" />
++      <sourceFolder url="file://$MODULE_DIR$/../../../app/build/generated/source/kaptKotlin/debugUnitTest" isTestSource="true" />
++      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/androidTest/java" isTestSource="true" />
++      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/main/java" isTestSource="false" />
++      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/main/res" type="java-resource" />
++      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/test/java" isTestSource="true" />
++      <excludeFolder url="file://$MODULE_DIR$/../../../app/.gradle" />
++      <excludeFolder url="file://$MODULE_DIR$/../../../app/build" />
++    </content>
++    <orderEntry type="jdk" jdkName="Android API 29 Platform" jdkType="Android SDK" />
++    <orderEntry type="sourceFolder" forTests="false" />
++    <orderEntry type="library" scope="TEST" name="Gradle: junit:junit:4.12" level="project" />
++    <orderEntry type="module-library">
++      <library name="Gradle: kaptGeneratedClasses">
++        <CLASSES>
++          <root url="file://$MODULE_DIR$/../../../app/build/tmp/kapt3/classes/debug" />
++        </CLASSES>
++        <JAVADOC />
++        <SOURCES />
++      </library>
++    </orderEntry>
++    <orderEntry type="module-library" scope="TEST">
++      <library name="Gradle: kaptGeneratedTestClasses">
++        <CLASSES>
++          <root url="file://$MODULE_DIR$/../../../app/build/tmp/kapt3/classes/debugUnitTest" />
++          <root url="file://$MODULE_DIR$/../../../app/build/tmp/kapt3/classes/debugAndroidTest" />
++        </CLASSES>
++        <JAVADOC />
++        <SOURCES />
++      </library>
++    </orderEntry>
++    <orderEntry type="library" scope="TEST" name="Gradle: org.hamcrest:hamcrest-core:1.3" level="project" />
++    <orderEntry type="library" scope="TEST" name="Gradle: org.hamcrest:hamcrest-integration:1.3" level="project" />
++    <orderEntry type="library" scope="TEST" name="Gradle: org.hamcrest:hamcrest-library:1.3" level="project" />
++    <orderEntry type="library" scope="TEST" name="Gradle: net.sf.kxml:kxml2:2.3.0" level="project" />
++    <orderEntry type="library" scope="TEST" name="Gradle: com.squareup:javawriter:2.1.1" level="project" />
++    <orderEntry type="library" scope="TEST" name="Gradle: javax.inject:javax.inject:1" level="project" />
++    <orderEntry type="library" scope="TEST" name="Gradle: com.google.code.findbugs:jsr305:2.0.1" level="project" />
++    <orderEntry type="library" scope="TEST" name="Gradle: androidx.test.ext:junit:1.1.1@aar" level="project" />
++    <orderEntry type="library" scope="TEST" name="Gradle: androidx.test.espresso:espresso-core:3.2.0@aar" level="project" />
++    <orderEntry type="library" scope="TEST" name="Gradle: androidx.test:runner:1.2.0@aar" level="project" />
++    <orderEntry type="library" scope="TEST" name="Gradle: androidx.test:core:1.2.0@aar" level="project" />
++    <orderEntry type="library" scope="TEST" name="Gradle: androidx.test:monitor:1.2.0@aar" level="project" />
++    <orderEntry type="library" scope="TEST" name="Gradle: androidx.test.espresso:espresso-idling-resource:3.2.0@aar" level="project" />
++    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-android-extensions-runtime:1.3.72" level="project" />
++    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.3.72" level="project" />
++    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-common:1.3.72" level="project" />
++    <orderEntry type="library" name="Gradle: org.jetbrains:annotations:13.0" level="project" />
++    <orderEntry type="library" name="Gradle: androidx.collection:collection:1.1.0" level="project" />
++    <orderEntry type="library" name="Gradle: androidx.arch.core:core-common:2.1.0" level="project" />
++    <orderEntry type="library" name="Gradle: androidx.lifecycle:lifecycle-common:2.2.0" level="project" />
++    <orderEntry type="library" name="Gradle: androidx.room:room-common:2.3.0-alpha02" level="project" />
++    <orderEntry type="library" name="Gradle: androidx.annotation:annotation:1.1.0" level="project" />
++    <orderEntry type="library" name="Gradle: androidx.constraintlayout:constraintlayout-solver:1.1.3" level="project" />
++    <orderEntry type="library" name="Gradle: androidx.core:core-ktx:1.3.1@aar" level="project" />
++    <orderEntry type="library" name="Gradle: androidx.appcompat:appcompat:1.1.0@aar" level="project" />
++    <orderEntry type="library" name="Gradle: androidx.recyclerview:recyclerview:1.2.0-alpha05@aar" level="project" />
++    <orderEntry type="library" name="Gradle: androidx.lifecycle:lifecycle-extensions:2.2.0@aar" level="project" />
++    <orderEntry type="library" name="Gradle: androidx.fragment:fragment:1.2.0@aar" level="project" />
++    <orderEntry type="library" name="Gradle: androidx.appcompat:appcompat-resources:1.1.0@aar" level="project" />
++    <orderEntry type="library" name="Gradle: androidx.drawerlayout:drawerlayout:1.0.0@aar" level="project" />
++    <orderEntry type="library" name="Gradle: androidx.viewpager:viewpager:1.0.0@aar" level="project" />
++    <orderEntry type="library" name="Gradle: androidx.customview:customview:1.0.0@aar" level="project" />
++    <orderEntry type="library" name="Gradle: androidx.loader:loader:1.0.0@aar" level="project" />
++    <orderEntry type="library" name="Gradle: androidx.activity:activity:1.1.0@aar" level="project" />
++    <orderEntry type="library" name="Gradle: androidx.vectordrawable:vectordrawable-animated:1.1.0@aar" level="project" />
++    <orderEntry type="library" name="Gradle: androidx.vectordrawable:vectordrawable:1.1.0@aar" level="project" />
++    <orderEntry type="library" name="Gradle: androidx.core:core:1.3.1@aar" level="project" />
++    <orderEntry type="library" name="Gradle: androidx.cursoradapter:cursoradapter:1.0.0@aar" level="project" />
++    <orderEntry type="library" name="Gradle: androidx.versionedparcelable:versionedparcelable:1.1.0@aar" level="project" />
++    <orderEntry type="library" name="Gradle: androidx.lifecycle:lifecycle-process:2.2.0@aar" level="project" />
++    <orderEntry type="library" name="Gradle: androidx.lifecycle:lifecycle-service:2.2.0@aar" level="project" />
++    <orderEntry type="library" name="Gradle: androidx.lifecycle:lifecycle-runtime:2.2.0@aar" level="project" />
++    <orderEntry type="library" name="Gradle: androidx.lifecycle:lifecycle-livedata:2.2.0@aar" level="project" />
++    <orderEntry type="library" name="Gradle: androidx.lifecycle:lifecycle-viewmodel-savedstate:1.0.0@aar" level="project" />
++    <orderEntry type="library" name="Gradle: androidx.lifecycle:lifecycle-livedata-core:2.2.0@aar" level="project" />
++    <orderEntry type="library" name="Gradle: androidx.arch.core:core-runtime:2.1.0@aar" level="project" />
++    <orderEntry type="library" name="Gradle: androidx.savedstate:savedstate:1.0.0@aar" level="project" />
++    <orderEntry type="library" name="Gradle: androidx.lifecycle:lifecycle-viewmodel:2.2.0@aar" level="project" />
++    <orderEntry type="library" name="Gradle: androidx.room:room-runtime:2.3.0-alpha02@aar" level="project" />
++    <orderEntry type="library" name="Gradle: androidx.sqlite:sqlite-framework:2.1.0@aar" level="project" />
++    <orderEntry type="library" name="Gradle: androidx.sqlite:sqlite:2.1.0@aar" level="project" />
++    <orderEntry type="library" name="Gradle: androidx.interpolator:interpolator:1.0.0@aar" level="project" />
++    <orderEntry type="library" name="Gradle: androidx.constraintlayout:constraintlayout:1.1.3@aar" level="project" />
++  </component>
++</module>
+\ No newline at end of file
+Index: ../lab6db/app/src/main/java/db/lab6/Contact.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package db.lab6;\r\n\r\npublic class Contact {\r\n    public String Name;\r\n    public String Surname;\r\n    public String Phone;\r\n    public String Birthday;\r\n\r\n    public Contact(String name, String surname, String phone, String birthday) {\r\n        this.Name = name;\r\n        this.Surname = surname;\r\n        this.Phone = phone;\r\n        this.Birthday = birthday;\r\n    }\r\n}\r\n
+===================================================================
+diff --git a/../lab6db/app/src/main/java/db/lab6/Contact.java b/../lab6db/app/src/main/java/db/lab6/Contact.java
+--- a/../lab6db/app/src/main/java/db/lab6/Contact.java	
++++ b/../lab6db/app/src/main/java/db/lab6/Contact.java	
+@@ -1,15 +1,42 @@
+ package db.lab6;
+ 
+-public class Contact {
++import java.io.BufferedReader;
++import java.io.FileReader;
++import java.io.IOException;
++import java.io.Serializable;
++import java.util.ArrayList;
++
++public class Contact implements Serializable {
+     public String Name;
+     public String Surname;
+     public String Phone;
+     public String Birthday;
+ 
++    public static ArrayList<Contact> contacts = new ArrayList<>();
++
+     public Contact(String name, String surname, String phone, String birthday) {
+         this.Name = name;
+         this.Surname = surname;
+         this.Phone = phone;
+         this.Birthday = birthday;
+     }
++
++    public static ArrayList<Contact> GetList(){
++        ArrayList<Contact> contacts = new ArrayList<>();
++        try(BufferedReader br = new BufferedReader(new FileReader(MainActivity.privateFile)))
++        {
++            String s;
++            while((s = br.readLine()) != null) {
++                String[] parts = s.split("/");
++                String surname = parts[0];
++                String name = parts[1];
++                String phone = parts[2];
++                String date = parts[3];
++                Contact contact = new Contact(surname, name, phone, date);
++                contacts.add(contact);
++            }
++        }
++        catch(IOException ex){ }
++        return contacts;
++    }
+ }
+Index: ../lab6db/app/src/main/res/layout/activity_main.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    tools:context=\".MainActivity\">\r\n\r\n    <Button\r\n        android:id=\"@+id/add_main_button\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginStart=\"132dp\"\r\n        android:layout_marginTop=\"32dp\"\r\n        android:layout_weight=\"1\"\r\n        android:onClick=\"AddContactClick\"\r\n        android:text=\"Add Contact\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/contact_list\"\r\n        tools:ignore=\"MissingConstraints\" />\r\n\r\n    <Button\r\n        android:id=\"@+id/serialize_with_button\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginStart=\"96dp\"\r\n        android:layout_marginTop=\"20dp\"\r\n        android:text=\"Serialize with access\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/add_main_button\"\r\n        tools:ignore=\"MissingConstraints\" />\r\n\r\n    <Button\r\n        android:id=\"@+id/serialize_without_button\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginStart=\"80dp\"\r\n        android:layout_marginTop=\"24dp\"\r\n        android:text=\"Serialize without access\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/serialize_with_button\" />\r\n\r\n    <ListView\r\n        android:id=\"@+id/contact_list\"\r\n        android:layout_width=\"409dp\"\r\n        android:layout_height=\"435dp\"\r\n        tools:layout_editor_absoluteX=\"1dp\"\r\n        tools:layout_editor_absoluteY=\"1dp\"\r\n        tools:ignore=\"MissingConstraints\" />\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+===================================================================
+diff --git a/../lab6db/app/src/main/res/layout/activity_main.xml b/../lab6db/app/src/main/res/layout/activity_main.xml
+--- a/../lab6db/app/src/main/res/layout/activity_main.xml	
++++ b/../lab6db/app/src/main/res/layout/activity_main.xml	
+@@ -10,41 +10,54 @@
+         android:id="@+id/add_main_button"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+-        android:layout_marginStart="132dp"
+-        android:layout_marginTop="32dp"
++        android:layout_marginTop="20dp"
+         android:layout_weight="1"
+         android:onClick="AddContactClick"
+         android:text="Add Contact"
++        app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toBottomOf="@+id/contact_list"
+         tools:ignore="MissingConstraints" />
+ 
+     <Button
+-        android:id="@+id/serialize_with_button"
++        android:id="@+id/serialize_without_button"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+-        android:layout_marginStart="96dp"
+         android:layout_marginTop="20dp"
+-        android:text="Serialize with access"
++        android:onClick="PrivateFileClick"
++        android:text="Serialize Private File"
++        app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toBottomOf="@+id/add_main_button"
+-        tools:ignore="MissingConstraints" />
++        app:layout_constraintTop_toBottomOf="@+id/serialize_with_button" />
+ 
+     <Button
+-        android:id="@+id/serialize_without_button"
++        android:id="@+id/serialize_without_button2"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+-        android:layout_marginStart="80dp"
+-        android:layout_marginTop="24dp"
+-        android:text="Serialize without access"
++        android:layout_marginTop="84dp"
++        android:onClick="SearchClick"
++        android:text="Search"
++        app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toBottomOf="@+id/serialize_with_button" />
+ 
++    <Button
++        android:id="@+id/serialize_with_button"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginTop="16dp"
++        android:onClick="PublicFileClick"
++        android:text="Serialize Public File"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/add_main_button"
++        tools:ignore="MissingConstraints" />
++
+     <ListView
+         android:id="@+id/contact_list"
+-        android:layout_width="409dp"
+-        android:layout_height="435dp"
+-        tools:layout_editor_absoluteX="1dp"
+-        tools:layout_editor_absoluteY="1dp"
+-        tools:ignore="MissingConstraints" />
++        android:layout_width="407dp"
++        android:layout_height="358dp"
++        tools:ignore="MissingConstraints"
++        tools:layout_editor_absoluteX="3dp"
++        tools:layout_editor_absoluteY="1dp" />
+ </androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: ../lab6db/app/src/main/res/layout/activity_add.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    tools:context=\".AddActivity\">\r\n\r\n    <TextView\r\n        android:id=\"@+id/name_text\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginStart=\"16dp\"\r\n        android:text=\"Name\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        tools:layout_editor_absoluteY=\"16dp\"\r\n        tools:ignore=\"MissingConstraints\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/surname_text\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginStart=\"16dp\"\r\n        android:layout_marginTop=\"20dp\"\r\n        android:text=\"Surname\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/edit_text_name\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/phone_text\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginStart=\"16dp\"\r\n        android:layout_marginTop=\"16dp\"\r\n        android:text=\"Phone number\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/edit_text_surname\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/birthday_text\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginStart=\"16dp\"\r\n        android:layout_marginTop=\"16dp\"\r\n        android:text=\"Birthday\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/edit_text_phone\" />\r\n\r\n    <EditText\r\n        android:id=\"@+id/edit_text_name\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginStart=\"16dp\"\r\n        android:layout_marginTop=\"16dp\"\r\n        android:ems=\"10\"\r\n        android:inputType=\"textPersonName\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/name_text\" />\r\n\r\n    <EditText\r\n        android:id=\"@+id/edit_text_surname\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginStart=\"16dp\"\r\n        android:layout_marginTop=\"16dp\"\r\n        android:ems=\"10\"\r\n        android:inputType=\"textPersonName\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/surname_text\" />\r\n\r\n    <Button\r\n        android:id=\"@+id/add_button\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginStart=\"44dp\"\r\n        android:layout_marginTop=\"72dp\"\r\n        android:onClick=\"AddButtonClick\"\r\n        android:text=\"Add\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/date_picker\"\r\n        tools:ignore=\"MissingConstraints\" />\r\n\r\n    <Button\r\n        android:id=\"@+id/back_button\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginStart=\"84dp\"\r\n        android:layout_marginTop=\"72dp\"\r\n        android:onClick=\"BackButtonClick\"\r\n        android:text=\"Back\"\r\n        app:layout_constraintStart_toEndOf=\"@+id/add_button\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/date_picker\"\r\n        tools:ignore=\"MissingConstraints\" />\r\n\r\n    <EditText\r\n        android:id=\"@+id/edit_text_phone\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginStart=\"16dp\"\r\n        android:layout_marginTop=\"12dp\"\r\n        android:ems=\"10\"\r\n        android:inputType=\"phone\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/phone_text\" />\r\n\r\n    <DatePicker\r\n        android:id=\"@+id/date_picker\"\r\n        android:layout_width=\"318dp\"\r\n        android:layout_height=\"155dp\"\r\n        android:layout_marginTop=\"20dp\"\r\n        android:calendarViewShown=\"false\"\r\n        android:datePickerMode=\"spinner\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.172\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/birthday_text\" />\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+===================================================================
+diff --git a/../lab6db/app/src/main/res/layout/activity_add.xml b/../lab6db/app/src/main/res/layout/activity_add.xml
+--- a/../lab6db/app/src/main/res/layout/activity_add.xml	
++++ b/../lab6db/app/src/main/res/layout/activity_add.xml	
+@@ -94,12 +94,12 @@
+ 
+     <EditText
+         android:id="@+id/edit_text_phone"
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
++        android:layout_width="206dp"
++        android:layout_height="42dp"
+         android:layout_marginStart="16dp"
+         android:layout_marginTop="12dp"
+-        android:ems="10"
+         android:inputType="phone"
++        android:maxLength="8"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toBottomOf="@+id/phone_text" />
+ 
+@@ -110,6 +110,7 @@
+         android:layout_marginTop="20dp"
+         android:calendarViewShown="false"
+         android:datePickerMode="spinner"
++        android:maxDate="11/12/2022"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintHorizontal_bias="0.172"
+         app:layout_constraintStart_toStartOf="parent"
+Index: ../lab6db/app/src/main/java/db/lab6/MainActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package db.lab6;\r\n\r\nimport androidx.appcompat.app.AppCompatActivity;\r\n\r\nimport android.content.Intent;\r\nimport android.os.Bundle;\r\nimport android.view.View;\r\n\r\npublic class MainActivity extends AppCompatActivity {\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_main);\r\n    }\r\n\r\n    public void AddContactClick(View view) {\r\n        Intent intent = new Intent(this, AddActivity.class);\r\n        startActivity(intent);\r\n    }\r\n}
+===================================================================
+diff --git a/../lab6db/app/src/main/java/db/lab6/MainActivity.java b/../lab6db/app/src/main/java/db/lab6/MainActivity.java
+--- a/../lab6db/app/src/main/java/db/lab6/MainActivity.java	
++++ b/../lab6db/app/src/main/java/db/lab6/MainActivity.java	
+@@ -1,21 +1,117 @@
+ package db.lab6;
+ 
+ import androidx.appcompat.app.AppCompatActivity;
++import androidx.core.app.ActivityCompat;
+ 
++import android.Manifest;
++import android.app.Activity;
+ import android.content.Intent;
++import android.content.pm.PackageManager;
+ import android.os.Bundle;
++import android.os.Environment;
++import android.util.Log;
+ import android.view.View;
++import android.widget.ArrayAdapter;
++import android.widget.DatePicker;
++import android.widget.ListView;
++
++import java.io.BufferedReader;
++import java.io.BufferedWriter;
++import java.io.File;
++import java.io.FileReader;
++import java.io.FileWriter;
++import java.io.IOException;
++import java.text.DateFormat;
++import java.text.SimpleDateFormat;
++import java.util.ArrayList;
++import java.util.Date;
++import java.util.Locale;
+ 
+ public class MainActivity extends AppCompatActivity {
++    public String filename = "Contacts.txt";
++    public File publicFile;
++    public static File privateFile;
+ 
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
+         setContentView(R.layout.activity_main);
++
++        publicFileExist();
++        privateFileExist();
++
++        if (Contact.contacts.isEmpty()) {
++            Contact.contacts = Contact.GetList();
++        }
++
++        try {
++            ArrayList<String> contactsView = new ArrayList<>();
++            ListView contactsList = findViewById(R.id.contact_list);
++
++            if (!(Contact.contacts.isEmpty())) {
++                for (Contact contact : Contact.contacts) {
++                    contactsView.add(contact.Name + " " + contact.Surname + "\n"
++                            + contact.Phone);
++                }
++
++                ArrayAdapter<String> adapter = new ArrayAdapter(this,
++                        android.R.layout.simple_list_item_1, contactsView);
++
++                contactsList.setAdapter(adapter);
++            }
++
++        }
++        catch (NullPointerException e) { }
+     }
+ 
+     public void AddContactClick(View view) {
+         Intent intent = new Intent(this, AddActivity.class);
++        intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
++        startActivity(intent);
++    }
++
++    public void PublicFileClick(View view) {
++        try (BufferedWriter writer = new BufferedWriter(new FileWriter(publicFile, false))) {
++            for (Contact contact : Contact.contacts) {
++                writer.write(contact.Name + "/" + contact.Surname + "/"
++                        + contact.Phone + "/" + contact.Birthday + "\n");
++            }
++        }
++        catch (IOException e) { }
++    }
++
++    public void PrivateFileClick(View view) {
++        try (BufferedWriter writer = new BufferedWriter(new FileWriter(privateFile, false))) {
++            for (Contact contact : Contact.contacts) {
++                writer.write(contact.Name + "/" + contact.Surname + "/"
++                        + contact.Phone + "/" + contact.Birthday + "\n");
++            }
++        }
++        catch (IOException e) { }
++    }
++
++    private void publicFileExist() {
++        publicFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS), filename);
++        if (!publicFile.exists()) {
++            try {
++                publicFile.createNewFile();
++            }
++            catch (IOException e) { }
++        }
++    }
++
++    private void privateFileExist() {
++        privateFile = new File(getFilesDir(), filename);
++        if (!privateFile.exists()) {
++            try {
++                privateFile.createNewFile();
++            }
++            catch (IOException e) { }
++        }
++    }
++
++    public void SearchClick(View view) {
++        Intent intent = new Intent(this, SearchActivity.class);
+         startActivity(intent);
+     }
+ }
+\ No newline at end of file
+Index: ../lab6db/app/src/main/java/db/lab6/AddActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package db.lab6;\r\n\r\nimport androidx.appcompat.app.AppCompatActivity;\r\n\r\nimport android.content.Intent;\r\nimport android.os.Bundle;\r\nimport android.view.View;\r\nimport android.widget.DatePicker;\r\nimport android.widget.EditText;\r\nimport android.widget.Toast;\r\n\r\npublic class AddActivity extends AppCompatActivity {\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_add);\r\n    }\r\n\r\n    public void BackButtonClick(View view) {\r\n        Intent intent = new Intent(this, MainActivity.class);\r\n        startActivity(intent);\r\n    }\r\n\r\n    public void AddButtonClick(View view) {\r\n        EditText name = findViewById(R.id.edit_text_name);\r\n        EditText surname = findViewById(R.id.edit_text_surname);\r\n        EditText phone = findViewById(R.id.edit_text_phone);\r\n        DatePicker birthday = findViewById(R.id.date_picker);\r\n\r\n        if (name.getText().toString().trim().length() >= 1 && surname.getText().toString().trim().length() >= 1\r\n                && phone.getText().toString().trim().length() >= 1) {\r\n            String birthdayText = birthday.getDayOfMonth() + \".\" + birthday.getMonth() + \".\" + birthday.getYear();\r\n\r\n            Contact contact = new Contact(name.getText().toString(), surname.getText().toString(),\r\n                    phone.getText().toString(), birthdayText);\r\n        }\r\n        else {\r\n            Toast toast = Toast.makeText(this, \"Заполните все поля\", Toast.LENGTH_LONG);\r\n            toast.show();\r\n        }\r\n    }\r\n}
+===================================================================
+diff --git a/../lab6db/app/src/main/java/db/lab6/AddActivity.java b/../lab6db/app/src/main/java/db/lab6/AddActivity.java
+--- a/../lab6db/app/src/main/java/db/lab6/AddActivity.java	
++++ b/../lab6db/app/src/main/java/db/lab6/AddActivity.java	
+@@ -4,11 +4,14 @@
+ 
+ import android.content.Intent;
+ import android.os.Bundle;
++import android.util.Log;
+ import android.view.View;
+ import android.widget.DatePicker;
+ import android.widget.EditText;
+ import android.widget.Toast;
+ 
++import java.io.Console;
++
+ public class AddActivity extends AppCompatActivity {
+ 
+     @Override
+@@ -30,10 +33,18 @@
+ 
+         if (name.getText().toString().trim().length() >= 1 && surname.getText().toString().trim().length() >= 1
+                 && phone.getText().toString().trim().length() >= 1) {
+-            String birthdayText = birthday.getDayOfMonth() + "." + birthday.getMonth() + "." + birthday.getYear();
++            String birthdayText = birthday.getDayOfMonth() + "." + birthday.getMonth()+1 + "." + birthday.getYear();
+ 
+             Contact contact = new Contact(name.getText().toString(), surname.getText().toString(),
+                     phone.getText().toString(), birthdayText);
++
++            Contact.contacts.add(contact);
++
++            Toast toast = Toast.makeText(this, "Контакт добавлен", Toast.LENGTH_LONG);
++            toast.show();
++
++            Intent intent = new Intent(this, MainActivity.class);
++            startActivity(intent);
+         }
+         else {
+             Toast toast = Toast.makeText(this, "Заполните все поля", Toast.LENGTH_LONG);
+Index: ../lab6db/app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\">\r\n\r\n    <application\r\n        android:allowBackup=\"true\"\r\n        android:dataExtractionRules=\"@xml/data_extraction_rules\"\r\n        android:fullBackupContent=\"@xml/backup_rules\"\r\n        android:icon=\"@mipmap/ic_launcher\"\r\n        android:label=\"@string/app_name\"\r\n        android:roundIcon=\"@mipmap/ic_launcher_round\"\r\n        android:supportsRtl=\"true\"\r\n        android:theme=\"@style/Theme.Lab6\"\r\n        tools:targetApi=\"31\">\r\n        <activity\r\n            android:name=\".AddActivity\"\r\n            android:exported=\"false\">\r\n            <meta-data\r\n                android:name=\"android.app.lib_name\"\r\n                android:value=\"\" />\r\n        </activity>\r\n        <activity\r\n            android:name=\".MainActivity\"\r\n            android:exported=\"true\">\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\" />\r\n\r\n                <category android:name=\"android.intent.category.LAUNCHER\" />\r\n            </intent-filter>\r\n\r\n            <meta-data\r\n                android:name=\"android.app.lib_name\"\r\n                android:value=\"\" />\r\n        </activity>\r\n    </application>\r\n\r\n</manifest>
+===================================================================
+diff --git a/../lab6db/app/src/main/AndroidManifest.xml b/../lab6db/app/src/main/AndroidManifest.xml
+--- a/../lab6db/app/src/main/AndroidManifest.xml	
++++ b/../lab6db/app/src/main/AndroidManifest.xml	
+@@ -2,6 +2,8 @@
+ <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:tools="http://schemas.android.com/tools">
+ 
++    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
++
+     <application
+         android:allowBackup="true"
+         android:dataExtractionRules="@xml/data_extraction_rules"
+@@ -12,6 +14,13 @@
+         android:supportsRtl="true"
+         android:theme="@style/Theme.Lab6"
+         tools:targetApi="31">
++        <activity
++            android:name=".SearchActivity"
++            android:exported="false">
++            <meta-data
++                android:name="android.app.lib_name"
++                android:value="" />
++        </activity>
+         <activity
+             android:name=".AddActivity"
+             android:exported="false">
