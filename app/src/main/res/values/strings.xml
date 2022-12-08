@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Need Help</string>
+
+
+    <!--TextView-->
+    <string name="user_email">Email</string>
+    <string name="user_password">Password</string>
+
+    <!--Button-->
+    <string name="button_auth">Authorization</string>
+    <string name="button_reg">Registration</string>
+</resources>
