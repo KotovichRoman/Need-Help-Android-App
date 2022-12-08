@@ -1,5 +1,6 @@
 package com.project.needhelp;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -8,10 +9,17 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.project.needhelp.api.model.UserDTO;
 import com.project.needhelp.classes.User;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -24,36 +32,72 @@ import retrofit2.Response;
 
 public class AuthFragment extends Fragment {
 
-    CompositeDisposable disposable = new CompositeDisposable();
+    private final CompositeDisposable disposable = new CompositeDisposable();
+
+    private View view;
+    private Button logInButton, signUpButton;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        User loginInformation = new User("bigden-2003@gmail.com", "qwerty");
+        view = inflater.inflate(R.layout.fragment_auth, container, false);
 
-        disposable.add(MainActivity.appAuth.getNeedHelpService().getApi().getToken(loginInformation)
+        logInButton = view.findViewById(R.id.logInButton);
+        signUpButton = view.findViewById(R.id.signUpButton);
+
+        LogInButtonClick();
+
+        return view;
+    }
+
+    private void LogInButtonClick() {
+        logInButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                EditText email = view.findViewById(R.id.userEmailEdit);
+                EditText password = view.findViewById(R.id.userPasswordEdit);
+
+                User loginInformation = new User(email.getText().toString(), password.getText().toString());
+
+                Authorization(loginInformation);
+            }
+        });
+    }
+
+    private void Authorization(User loginInformation) {
+        disposable.add(AuthActivity.appAuth.getNeedHelpService().getApi().getToken(loginInformation)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new BiConsumer<Response<UserDTO>, Throwable>() {
                     @Override
                     public void accept(Response<UserDTO> responseBody, Throwable throwable) throws Exception {
                         if (throwable == null) {
-                            if (responseBody.body() != null) {
-                                Log.d("token", responseBody.body().getToken());
-                            }
+                            assert responseBody.body() != null;
+                            WriteTokenToFile(responseBody.body().getToken());
                         } else {
-                            Log.d("token","pon");
+                            assert responseBody.errorBody() != null;
+                            Toast.makeText(getActivity(), responseBody.errorBody().toString(), Toast.LENGTH_LONG).show();
                         }
                     }
-                }));
+                })
+        );
+    }
 
-        return inflater.inflate(R.layout.fragment_auth, container, false);
+    private void WriteTokenToFile(String token) throws IOException {
+        File file = new File(AuthActivity.appAuth.getFilesDir(), "Token.txt");
+
+        if (!file.exists()) {
+            file.createNewFile();
+        }
+
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file, true));
+        bufferedWriter.write(token);
     }
 }
