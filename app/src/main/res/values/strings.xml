@@ -9,4 +9,13 @@
     <!--Button-->
     <string name="button_auth">Log In</string>
     <string name="button_reg">Sign Up</string>
+
+    <!--Menu elements-->
+    <string name="element_1">Element 1</string>
+    <string name="element_2">Element 2</string>
+    <string name="element_3">Element 3</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="navigation_drawer_open" />
+    <string name="navigation_drawer_close" />
 </resources>

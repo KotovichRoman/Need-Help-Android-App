@@ -32,8 +32,6 @@ import retrofit2.Response;
 
 public class AuthFragment extends Fragment {
 
-    private final CompositeDisposable disposable = new CompositeDisposable();
-
     private View view;
     private Button logInButton, signUpButton;
 
@@ -64,40 +62,11 @@ public class AuthFragment extends Fragment {
                 EditText email = view.findViewById(R.id.userEmailEdit);
                 EditText password = view.findViewById(R.id.userPasswordEdit);
 
-                User loginInformation = new User(email.getText().toString(), password.getText().toString());
+                User.currentUser.email = email.getText().toString();
+                User.currentUser.password = password.getText().toString();
 
-                Authorization(loginInformation);
+                User.currentUser.Authorization();
             }
         });
-    }
-
-    private void Authorization(User loginInformation) {
-        disposable.add(AuthActivity.appAuth.getNeedHelpService().getApi().getToken(loginInformation)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new BiConsumer<Response<UserDTO>, Throwable>() {
-                    @Override
-                    public void accept(Response<UserDTO> responseBody, Throwable throwable) throws Exception {
-                        if (throwable == null) {
-                            assert responseBody.body() != null;
-                            WriteTokenToFile(responseBody.body().getToken());
-                        } else {
-                            assert responseBody.errorBody() != null;
-                            Toast.makeText(getActivity(), responseBody.errorBody().toString(), Toast.LENGTH_LONG).show();
-                        }
-                    }
-                })
-        );
-    }
-
-    private void WriteTokenToFile(String token) throws IOException {
-        File file = new File(AuthActivity.appAuth.getFilesDir(), "Token.txt");
-
-        if (!file.exists()) {
-            file.createNewFile();
-        }
-
-        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file, true));
-        bufferedWriter.write(token);
     }
 }
