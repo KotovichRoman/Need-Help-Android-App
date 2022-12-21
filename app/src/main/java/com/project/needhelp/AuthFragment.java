@@ -1,6 +1,8 @@
 package com.project.needhelp;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -43,7 +45,6 @@ public class AuthFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         view = inflater.inflate(R.layout.fragment_auth, container, false);
 
         logInButton = view.findViewById(R.id.logInButton);
@@ -66,6 +67,9 @@ public class AuthFragment extends Fragment {
                 User.currentUser.password = password.getText().toString();
 
                 User.currentUser.Authorization();
+
+                Intent intent = new Intent(AuthActivity.context, MainActivity.class);
+                startActivity(intent);
             }
         });
     }

@@ -28,7 +28,7 @@ public class User {
     public String email;
     public String password;
 
-    public static User currentUser;
+    public static User currentUser = new User();
 
     public User() { }
 
@@ -46,33 +46,46 @@ public class User {
     public void Authorization() {
         CompositeDisposable disposable = new CompositeDisposable();
 
-        disposable.add(AuthActivity.appAuth.getNeedHelpService().getApi().getToken(currentUser)
+        disposable.add(AuthActivity.app.getNeedHelpService().getApi().getToken(currentUser)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new BiConsumer<Response<UserDTO>, Throwable>() {
+                .subscribe(new BiConsumer<UserDTO, Throwable>() {
                     @Override
-                    public void accept(Response<UserDTO> responseBody, Throwable throwable) throws Exception {
+                    public void accept(UserDTO userDTO, Throwable throwable) throws Exception {
                         if (throwable == null) {
-                            assert responseBody.body() != null;
-                            WriteTokenToFile(responseBody.body().getToken());
-                        } else {
-                            assert responseBody.errorBody() != null;
-                            Toast.makeText(MainActivity.context, responseBody.errorBody().toString(), Toast.LENGTH_LONG).show();
+                            WriteUserInformationToFile(userDTO.getToken());
                         }
                     }
                 })
         );
     }
 
-    private static void WriteTokenToFile(String token) throws IOException {
-        File file = new File(AuthActivity.appAuth.getFilesDir(), "User.txt");
+    public void Authentication(String token) {
+        CompositeDisposable disposable = new CompositeDisposable();
+
+        disposable.add(MainActivity.app.getNeedHelpService().getApi().getCurrentUser(token)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(new BiConsumer<User, Throwable>() {
+                    @Override
+                    public void accept(User user, Throwable throwable) throws Exception {
+                        if (throwable == null) {
+                            currentUser = user;
+                        }
+                    }
+                })
+        );
+    }
+
+    private void WriteUserInformationToFile(String token) throws IOException {
+        File file = new File(AuthActivity.app.getFilesDir(), "User.txt");
 
         if (!file.exists()) {
             file.createNewFile();
         }
 
-        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file, true));
-        bufferedWriter.write(currentUser.email + ";" + currentUser.password + ";" + token);
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file, false));
+        bufferedWriter.write(token);
         bufferedWriter.flush();
     }
 }

@@ -31,9 +31,12 @@ import java.util.Arrays;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    public static Context context;
+    public static App app;
 
     private DrawerLayout drawerLayout;
+
+    @SuppressLint("StaticFieldLeak")
+    public static Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +44,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         context = this;
+        app = (App) getApplication();
 
         drawerLayout = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -51,6 +55,11 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
 
         navigationView.setNavigationItemSelectedListener(this);
+
+        if (CheckAuth()) {
+            Intent intent = new Intent(this, AuthActivity.class);
+            startActivity(intent);
+        }
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -74,19 +83,23 @@ public class MainActivity extends AppCompatActivity
     private boolean CheckAuth() {
         File file = new File(super.getFilesDir(), "User.txt");
 
+        if (!file.exists()) {
+            return true;
+        }
+
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line;
-            String[] userInformation;
+            String token;
+
             if ((line = reader.readLine()) != null) {
-                userInformation = line.split(";");
+                token = line;
+                User.currentUser.Authentication(token);
             }
             else {
                 return true;
             }
         }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
+        catch (IOException ignored) { }
 
         return false;
     }
